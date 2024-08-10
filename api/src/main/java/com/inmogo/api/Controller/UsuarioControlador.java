@@ -1,7 +1,7 @@
-package com.example.InmoGoBackend.Controller;
+package com.inmogo.api.Controller;
 
-import com.example.InmoGoBackend.Entity.Usuario;
-import com.example.InmoGoBackend.Service.UsuarioServicio;
+import com.inmogo.api.Entity.Usuario;
+import com.inmogo.api.Service.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

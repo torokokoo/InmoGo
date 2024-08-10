@@ -1,10 +1,10 @@
-package com.example.InmoGoBackend;
+package com.inmogo.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InmoGoBackendApplicationTests {
+class ApiApplicationTests {
 
 	@Test
 	void contextLoads() {

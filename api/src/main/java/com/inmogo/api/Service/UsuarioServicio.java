@@ -1,13 +1,12 @@
-package com.example.InmoGoBackend.Service;
+package com.inmogo.api.Service;
 
-import com.example.InmoGoBackend.Entity.Usuario;
-import com.example.InmoGoBackend.Repository.UsuarioRepositorio;
+import com.inmogo.api.Entity.Usuario;
+import com.inmogo.api.Repository.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioServicio {
-    @Autowired
     private UsuarioRepositorio UsuarioRepo;
 
     //registrar usuario

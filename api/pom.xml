@@ -8,11 +8,11 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>InmoGoBackend</artifactId>
+	<groupId>com.inmogo</groupId>
+	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>InmoGoBackend</name>
-	<description>Demo project for Spring Boot</description>
+	<name>api</name>
+	<description>REST API para InmoGo</description>
 	<url/>
 	<licenses>
 		<license/>

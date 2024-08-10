@@ -1,4 +1,4 @@
-package com.example.InmoGoBackend.Entity;
+package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 
