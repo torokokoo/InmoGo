@@ -1,1 +1,1 @@
-Agregue al usuario como clase con todo lo que implica
+Agregue al usuario como clase con todo lo que implica.
