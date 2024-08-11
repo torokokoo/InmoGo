@@ -2,6 +2,8 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "Usuario")
 
@@ -18,10 +20,10 @@ public class Usuario {
     private String Contrasena;
     private String Rol;
     private String Permiso;
-    //private String ArrayList<HistorialChat>;
+    private ArrayList<HistorialChat> Historial;
 
     //constructor Usuario
-    public Usuario(long id, String nombre, String rut, String email, String contrasena, String rol, String permiso) {
+    public Usuario(long id, String nombre, String rut, String email, String contrasena, String rol, String permiso, ArrayList<HistorialChat> historial) {
         Id = id;
         Nombre = nombre;
         Rut = rut;
@@ -29,7 +31,10 @@ public class Usuario {
         Contrasena = contrasena;
         Rol = rol;
         Permiso = permiso;
+        Historial = historial;
     }
+
+
 
     //getters y setters Usuario
 
@@ -88,4 +93,9 @@ public class Usuario {
     public void setPermiso(String permiso) {
         Permiso = permiso;
     }
+
+    public ArrayList<HistorialChat> getHistorial() { return Historial; }
+
+    public void setHistorial(ArrayList<HistorialChat> historial) { Historial = historial; }
+
 }

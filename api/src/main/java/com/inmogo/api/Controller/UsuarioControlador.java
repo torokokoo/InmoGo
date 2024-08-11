@@ -15,7 +15,7 @@ public class UsuarioControlador {
     //registra usuario
     @PostMapping("/register")
     public Usuario register(@RequestBody Usuario nuevoUsuario){
-        return usuarioSer.register(nuevoUsuario.getId(),nuevoUsuario.getNombre(),nuevoUsuario.getRut(),nuevoUsuario.getEmail(),nuevoUsuario.getContrasena(),nuevoUsuario.getRol(), nuevoUsuario.getPermiso());
+        return usuarioSer.register(nuevoUsuario.getId(),nuevoUsuario.getNombre(),nuevoUsuario.getRut(),nuevoUsuario.getEmail(),nuevoUsuario.getContrasena(),nuevoUsuario.getRol(), nuevoUsuario.getPermiso(),nuevoUsuario.getHistorial());
     }
     //logea usuario
     @PostMapping("/login")
