@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioServicio {
+    @Autowired
     private UsuarioRepositorio UsuarioRepo;
 
     //registrar usuario
-    public Usuario register(long Id,String Nombre,String Rut,String Email,String Contrasena,String Rol,String Permiso){
-        Usuario usuario = new Usuario(Id,Nombre,Rut,Email,Contrasena,Rol,Permiso);
+    public Usuario register(String nombre,String rut,String email,String password,String rol,String permiso){
+        Usuario usuario = new Usuario(nombre,rut,email,password,rol,permiso);
         Usuario existente = UsuarioRepo.findByEmail(usuario.getEmail());
         if (existente != null){
             return null;
@@ -19,16 +20,14 @@ public class UsuarioServicio {
         return UsuarioRepo.save(usuario);
     }
     //login usuario
-    public int login(String Email,String contrasena){
-        Usuario usuario = UsuarioRepo.findByEmail(Email);
+    public Usuario login(String email,String password){
+        Usuario usuario = UsuarioRepo.findByEmail(email);
         if (usuario != null){
-            if (contrasena.equals(usuario.getContrasena())){
-                if (usuario.getRol().equals("Usuario")){
-                    return 1;
-                }
+            if (password.equals(usuario.getPassword())){
+                return usuario;
             }
         }
-        return 0;
+        return null;
     }
     public Usuario getUsuarioById(long Id){
         return UsuarioRepo.findById(Id).get();

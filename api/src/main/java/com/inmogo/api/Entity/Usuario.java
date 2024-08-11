@@ -3,89 +3,91 @@ package com.inmogo.api.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Usuario")
-
-
-
+@Table(name = "usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     //atributos
-    private long Id;
-    private String Nombre;
-    private String Rut;
-    private String Email;
-    private String Contrasena;
-    private String Rol;
-    private String Permiso;
+    private long id;
+    private String nombre;
+    private String rut;
+    private String email;
+    private String password;
+    private String rol;
+    private String permiso;
     //private String ArrayList<HistorialChat>;
 
     //constructor Usuario
-    public Usuario(long id, String nombre, String rut, String email, String contrasena, String rol, String permiso) {
-        Id = id;
-        Nombre = nombre;
-        Rut = rut;
-        Email = email;
-        Contrasena = contrasena;
-        Rol = rol;
-        Permiso = permiso;
+    public Usuario(String nombre, String rut, String email, String password, String rol, String permiso) {
+        this.id = id;
+        this.nombre = nombre;
+        this.rut = rut;
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
+        this.permiso = permiso;
+    }
+
+    public Usuario(){
+
     }
 
     //getters y setters Usuario
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getRut() {
-        return Rut;
+        return rut;
     }
 
     public void setRut(String rut) {
-        Rut = rut;
+        this.rut = rut;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getContrasena() {
-        return Contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRol() {
-        return Rol;
+        return rol;
     }
 
     public void setRol(String rol) {
-        Rol = rol;
+        this.rol = rol;
     }
 
     public String getPermiso() {
-        return Permiso;
+        return permiso;
     }
 
     public void setPermiso(String permiso) {
-        Permiso = permiso;
+        this.permiso = permiso;
     }
 }
