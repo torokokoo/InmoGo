@@ -22,6 +22,7 @@ public class UsuarioServicio {
     //login usuario
     public Usuario login(String email,String password){
         Usuario usuario = UsuarioRepo.findByEmail(email);
+        System.out.println("Login");
         if (usuario != null){
             if (password.equals(usuario.getPassword())){
                 return usuario;
