@@ -14,17 +14,18 @@
             <p class="text-sm mt-12 text-gray-800">Don't have an account <a href="javascript:void(0);" class="text-blue-600 font-semibold hover:underline ml-1">Register here</a></p>
           </div>
 
-          <form class="max-w-md md:ml-auto w-full" @submit.prevent='login'>
+          <form class="max-w-md md:ml-auto w-full" @submit.prevent='onSubmit'>
             <h3 class="text-gray-800 text-3xl font-extrabold mb-8">
               Sign in
             </h3>
+            <p v-for="error of v$.email.$errors" :key="error.$uid"> {{ error.$message }} </p>
 
             <div class="space-y-4">
               <div>
-                <input name="email" v-model="email" type="email" autocomplete="email" required class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Email address" />
+                <input name="email" v-model="email" type="text" autocomplete="email" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Email address" />
               </div>
               <div>
-                <input name="password" v-model="password" type="password" autocomplete="current-password" required class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Password" />
+                <input name="password" v-model="password" type="password" autocomplete="current-password" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Password" />
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center">
@@ -84,19 +85,40 @@
 </style>
 
 <script>
-    import axios from 'axios';
-    import { api } from '@/config/index.js';
+    import { useVuelidate } from '@vuelidate/core';
+    import { required$, email$ } from '@/helpers/validators'
+    import { mapActions } from 'vuex';
 
     export default {
+        setup() {
+          return { v$: useVuelidate( )}
+        },
         data: () => ({
             email: '',
             password: '',
         }),
+        computed: {
+        },
         methods: {
-            async login() {
-                let res = await axios.post(api + 'api/usuario/login', {email: this.email, password: this.password});
-                console.log(res)
-            }
+            ...mapActions('auth', ['login']),
+            async onSubmit() {
+              this.v$.$touch();
+              let valido = await this.v$.$validate();
+              if (valido) {
+                  const payload = {
+                    email: this.email,
+                    password: this.password,
+                  }
+
+                  await this['login'](payload);
+              }
+            },
+        },
+        validations() {
+          return {
+            email: { required$, email$ },
+            password: { required$ },
+          }
         }
     }
 </script>
