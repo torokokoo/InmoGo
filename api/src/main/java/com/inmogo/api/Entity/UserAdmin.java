@@ -1,9 +1,9 @@
 package com.inmogo.api.Entity;
 
-public class UsuarioAdmin extends Usuario {
+public class UserAdmin extends User {
     //Constructor
-    public UsuarioAdmin(long id, String nombre, String rut, String email, String contrasena, String rol, String permiso) {
-        super(id,nombre,rut,email,contrasena,rol,permiso);
+    public UserAdmin(long id, String name, String rut, String email, String password, String role, String permission) {
+        super(id, name, rut, email, password, role, permission);
     }
 
     //Metodos agregados de Admin
