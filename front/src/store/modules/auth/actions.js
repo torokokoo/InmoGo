@@ -5,8 +5,9 @@ import router from '@/router'
 export default {
     async login({ commit }, payload) {
         const { data } = await axios.post(api + 'api/usuario/login', payload);
-        commit('setUser', data.user);
-        commit('loggedIn', true);
+        commit('setUser', data);
+        localStorage.setItem('user', JSON.stringify(data));
+        commit('setLoggedIn', true);
         router.push({ path: '/' });
     },
 }

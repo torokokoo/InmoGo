@@ -1,4 +1,3 @@
-// import Vue from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 
 import App from "../App.vue";

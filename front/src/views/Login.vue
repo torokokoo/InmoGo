@@ -18,7 +18,9 @@
             <h3 class="text-gray-800 text-3xl font-extrabold mb-8">
               Sign in
             </h3>
-            <p v-for="error of v$.email.$errors" :key="error.$uid"> {{ error.$message }} </p>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-5 rounded relative" v-if="v$.$errors.length > 0" role="alert">
+              <span class="block" v-for="error of v$.$errors" :key="error.$uid">- {{ error.$message }}</span>
+            </div>
 
             <div class="space-y-4">
               <div>
@@ -80,13 +82,12 @@
     </div>
 	</main>
 </template>
-
 <style scoped>
 </style>
 
 <script>
     import { useVuelidate } from '@vuelidate/core';
-    import { required$, email$ } from '@/helpers/validators'
+    import { requiredEmail$, requiredPassword$, email$ } from '@/helpers/validators'
     import { mapActions } from 'vuex';
 
     export default {
@@ -96,6 +97,7 @@
         data: () => ({
             email: '',
             password: '',
+            rememberMe: false,
         }),
         computed: {
         },
@@ -116,8 +118,8 @@
         },
         validations() {
           return {
-            email: { required$, email$ },
-            password: { required$ },
+            email: { requiredEmail$, email$ },
+            password: { requiredPassword$ },
           }
         }
     }

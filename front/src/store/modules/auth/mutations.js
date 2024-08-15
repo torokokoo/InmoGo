@@ -1,5 +1,5 @@
 export default {
-    setUser(state, value) {
+    ['setUser'](state, value) {
         state.user = value;
     },
     setLoggedIn(state, value) {
