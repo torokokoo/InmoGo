@@ -26,7 +26,7 @@ public class UsuarioControlador {
     @PostMapping("/login")
     public Usuario login(@RequestBody Usuario usuario){
         Usuario res = usuarioSer.login(usuario.getEmail(), usuario.getPassword());
-        if (res != null) { return res; } else { throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cause description here");}
+        if (res != null) { return res; } else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
     //consigue el id de usuario
     @GetMapping("/id")
