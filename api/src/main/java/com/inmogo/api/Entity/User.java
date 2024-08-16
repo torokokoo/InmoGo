@@ -4,43 +4,43 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     //atributos
     private long id;
-    private String nombre;
+    private String name;
     private String rut;
     private String email;
     private String password;
-    private String rol;
-    private String permiso;
+    private String role;
+    private String permission;
     //private String ArrayList<HistorialChat>;
 
-    //constructor Usuario
-    public Usuario(String nombre, String rut, String email, String password, String rol, String permiso) {
+    //constructor User
+    public User(String name, String rut, String email, String password, String role, String permission) {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.rol = rol;
-        this.permiso = permiso;
+        this.role = role;
+        this.permission = permission;
     }
 
-    public Usuario(){
+    public User(){
 
     }
 
-    //getters y setters Usuario
+    //getters y setters User
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String nombre) {
+        this.name = nombre;
     }
 
     public long getId() {
@@ -75,19 +75,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String rol) {
+        this.role = rol;
     }
 
-    public String getPermiso() {
-        return permiso;
+    public String getPermission() {
+        return permission;
     }
 
-    public void setPermiso(String permiso) {
-        this.permiso = permiso;
+    public void setPermission(String permiso) {
+        this.permission = permiso;
     }
 }
