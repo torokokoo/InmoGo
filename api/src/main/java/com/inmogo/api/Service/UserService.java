@@ -1,9 +1,9 @@
 package com.inmogo.api.Service;
 
-import com.inmogo.api.Entity.User;
-import com.inmogo.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.inmogo.api.Repository.UserRepository;
+import com.inmogo.api.Entity.User;
 
 @Service
 public class UserService {
@@ -14,6 +14,7 @@ public class UserService {
     public User register(long id, String name, String rut, String email, String password, String role, String permission){
         User user = new User(id, name, rut, email, password, role, permission);
         User exists = userRepo.findByEmail(user.getEmail());
+        System.out.println("Register");
         if (exists != null){
             return null;
         }
@@ -34,6 +35,7 @@ public class UserService {
 
     //Busqueda por ID
     public User getUserById(long Id){
-        return userRepo.findById(Id).get();
+        return userRepo.findById(Id).orElse(null);
     }
+
 }

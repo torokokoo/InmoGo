@@ -31,10 +31,12 @@ public class UserController {
         else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
 
+    /*
     //consigue el id de usuario
     @GetMapping("/id")
     public User getUserById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
         return userService.getUserById(Integer.parseInt(id));
     }
+    */
 }
