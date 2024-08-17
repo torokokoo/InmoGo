@@ -88,7 +88,8 @@ public class Property {
 }
 
 /*
-Pendiente hacer
+PENDIENTE POR HACER
+Ni idea de como hacerlo
 
 -ConseguirImagenes(): return void
  */
