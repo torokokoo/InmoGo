@@ -6,6 +6,10 @@ public class UserMod extends UserTemplate {
         super(id, name, rut, email, password, role, permission);
     }
 
+    public UserMod(){
+        super();
+    }
+
     //Metodos Agregados por Mod
 
     /*

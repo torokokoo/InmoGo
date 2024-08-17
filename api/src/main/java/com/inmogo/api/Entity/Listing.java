@@ -17,6 +17,13 @@ public class Listing {
         this.rankingPos = rankingPos;
     }
 
+    public Listing(){
+        this.title = "Publicacion de Prueba";
+        this.publishDate = new Timestamp(System.currentTimeMillis());
+        this.notesFromPropietary = "Notas de Propietario";
+        this.rankingPos = 0;
+    }
+
     //Getter
     public String getTitle(){return this.title;}
     public Timestamp getPublishDate(){return this.publishDate;}

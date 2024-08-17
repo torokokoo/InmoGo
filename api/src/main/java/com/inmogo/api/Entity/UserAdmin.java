@@ -6,6 +6,10 @@ public class UserAdmin extends UserTemplate {
         super(id, name, rut, email, password, role, permission);
     }
 
+    public UserAdmin(){
+        super();
+    }
+
     //Metodos agregados de Admin
 
     /*
