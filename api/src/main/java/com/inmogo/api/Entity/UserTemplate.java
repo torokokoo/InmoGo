@@ -3,9 +3,9 @@ package com.inmogo.api.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "UserTemplate")
 
-public class User {
+public class UserTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
@@ -19,7 +19,7 @@ public class User {
     //private String ArrayList<ChatHistory>;
 
     //Constructor
-    public User(long id, String name, String rut, String email, String password, String role, String permission) {
+    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
         this.id = id;
         this.name = name;
         this.rut = rut;
@@ -30,14 +30,14 @@ public class User {
     }
 
     //Default
-    public User() {
+    public UserTemplate() {
         this.id = 0;
         this.name = "Default";
         this.rut = "123456789";
         this.email = "example@example.com";
         this.password = "1234";
-        this.role = "User";
-        this.permission = "User";
+        this.role = "UserTemplate";
+        this.permission = "UserTemplate";
     }
 
     //Getters

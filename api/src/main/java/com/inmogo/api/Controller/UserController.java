@@ -1,6 +1,6 @@
 package com.inmogo.api.Controller;
 
-import com.inmogo.api.Entity.User;
+import com.inmogo.api.Entity.UserTemplate;
 import com.inmogo.api.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
@@ -19,14 +19,14 @@ public class UserController {
 
     //registra usuario
     @PostMapping("/register")
-    public User register(@RequestBody User newUser){
-        return userService.register(newUser.getId(), newUser.getName(), newUser.getRut(), newUser.getEmail(), newUser.getPassword(), newUser.getRole(), newUser.getPermission());
+    public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
+        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
     }
 
     //logea usuario
     @PostMapping("/login")
-    public User login(@RequestBody User user){
-        User res = userService.login(user.getEmail(), user.getPassword());
+    public UserTemplate login(@RequestBody UserTemplate userTemplate){
+        UserTemplate res = userService.login(userTemplate.getEmail(), userTemplate.getPassword());
         if (res != null) { return res; }
         else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
@@ -34,7 +34,7 @@ public class UserController {
     /*
     //consigue el id de usuario
     @GetMapping("/id")
-    public User getUserById(@RequestParam("id") String id){
+    public UserTemplate getUserById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
         return userService.getUserById(Integer.parseInt(id));
     }

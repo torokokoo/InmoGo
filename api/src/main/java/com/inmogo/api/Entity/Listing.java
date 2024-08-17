@@ -2,7 +2,7 @@ package com.inmogo.api.Entity;
 
 import java.sql.Timestamp;
 
-public class Publication {
+public class Listing {
     //Attributes
     private String title; //titulo
     private Timestamp publishDate; //publishDate
@@ -10,7 +10,7 @@ public class Publication {
     private int rankingPos; //PosicionRanking
 
     //Construct
-    public Publication(String title, Timestamp publishDate, String notesFromPropietary, int rankingPos){
+    public Listing(String title, Timestamp publishDate, String notesFromPropietary, int rankingPos){
         this.title = title;
         this.publishDate = publishDate;
         this.notesFromPropietary = notesFromPropietary;
