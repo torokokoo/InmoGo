@@ -11,8 +11,8 @@ public class UserService {
     private UserRepository UsuarioRepo;
 
     //registrar usuario
-    public User register(String nombre, String rut, String email, String password, String rol, String permiso){
-        User user = new User(nombre,rut,email,password,rol,permiso);
+    public User register(String Name, String rut, String email, String password, String role, String permission){
+        User user = new User(Name,rut,email,password,role,permission);
         User existente = UsuarioRepo.findByEmail(user.getEmail());
         if (existente != null){
             return null;

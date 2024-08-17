@@ -1,9 +1,8 @@
 package com.inmogo.api.Entity;
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

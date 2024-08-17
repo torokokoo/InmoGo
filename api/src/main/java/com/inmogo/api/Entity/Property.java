@@ -3,6 +3,7 @@ package com.inmogo.api.Entity;
 import java.util.*;
 
 public class Property {
+    // Atributos
     private String name;
     private String address;
     private String district;
@@ -11,7 +12,7 @@ public class Property {
     private ArrayList<String> images;
     private String dimensions;
 
-    // Constructor (si es necesario)
+    // Constructor
     public Property(String name, String address, String district, String description,
                     String sectorDescription, ArrayList<String> images, String dimensions) {
         this.name = name;
@@ -21,6 +22,10 @@ public class Property {
         this.sectorDescription = sectorDescription;
         this.images = images;
         this.dimensions = dimensions;
+    }
+
+    public Property(){
+
     }
 
     // Rescates
