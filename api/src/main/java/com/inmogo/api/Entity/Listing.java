@@ -21,7 +21,7 @@ public class Listing {
         this.title = "Publicacion de Prueba";
         this.publishDate = new Timestamp(System.currentTimeMillis());
         this.notesFromPropietary = "Notas de Propietario";
-        this.rankingPos = 0;
+        this.rankingPos = 1;
     }
 
     //Getter
@@ -37,5 +37,7 @@ public class Listing {
     public void setRankingPos(int rankingPos){this.rankingPos = rankingPos;}
 
     //Metodos
-    public void SolicitarFormulario(){}
+    public void requestForm(){ //solicitarFormulario
+        //TODO
+    }
 }

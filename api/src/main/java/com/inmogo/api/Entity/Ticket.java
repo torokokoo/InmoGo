@@ -42,11 +42,16 @@ public class Ticket { //Boleta
     public void setSellerRUT(String sellerRUT) { this.sellerRUT = sellerRUT; }
 
     //Other
-    public void printTicket(){
-        // TODO
+    public void printTicket(){ //imprimirBoleta
+        //TODO
     }
 
-    public void webPay(){
-        //Es simulado.
+    public void webPay(){ //pagoWeb
+        //TODO
+        /*
+        * Se tiene en mente implementar un menu que posea dos opciones que indiquen si se realizo el pago:
+        *   1. Se realizo el pago
+        *   2. No se realizo el pago
+        */
     }
 }

@@ -16,7 +16,7 @@ public class UserTemplate {
     private String password;
     private String role;
     private String permission;
-    //private String ArrayList<ChatHistory>;
+    //private ArrayList<ChatHistory> chatHistory;
 
     //Constructor
     public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
@@ -27,6 +27,7 @@ public class UserTemplate {
         this.password = password;
         this.role = role;
         this.permission = permission;
+        //this.chatHistory = chatHistory
     }
 
     //Default
@@ -38,6 +39,7 @@ public class UserTemplate {
         this.password = "1234";
         this.role = "UserTemplate";
         this.permission = "UserTemplate";
+        //this.chatHistory = new ArrayList<ChatHistory>();
     }
 
     //Getters
@@ -46,8 +48,9 @@ public class UserTemplate {
     public String getRut() { return rut; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
-    public String getRole() { return role; }
-    public String getPermission() { return permission; }
+    public String getRole() { return role; } //ConseguirRol
+    public String getPermission() { return permission; } //ConseguirPermiso
+    //public ArrayList<ChatHistory> getChatHistory() { return chatHistory; }
 
     //Setters
     public void setId(long id) { this.id = id; }
@@ -57,4 +60,15 @@ public class UserTemplate {
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
     public void setPermission(String permission) { this.permission = permission; }
+    //public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
+
+    //Other Methods
+    public void enterChatMode(){ //IngresarChatDeMensajeria
+        //TODO
+    }
+
+    public void displayHistory(){ //MostrarHistorial
+        //TODO
+    }
+
 }

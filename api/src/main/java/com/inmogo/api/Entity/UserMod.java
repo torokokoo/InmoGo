@@ -12,8 +12,12 @@ public class UserMod extends UserTemplate {
 
     //Metodos Agregados por Mod
 
-    /*
-    public Publicacion GestionarPublicaciones(){return Publicacion;}
-    public void ActualizarBaseDeDatos(){}
-    */
+    public Listing manageListing(){ //GestionarPublicaciones
+        //TODO
+        return new Listing();
+    }
+
+    public void updateDatabase(){ //ActualizarBaseDeDatos
+        //TODO
+    }
 }

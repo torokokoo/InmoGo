@@ -11,12 +11,26 @@ public class UserAdmin extends UserTemplate {
     }
 
     //Metodos agregados de Admin
+    public Listing Publicar(){ //Publicar
+        //TODO
+        return new Listing();
+    }
 
-    /*
-    public Publicacion Publicar(){return Publicacion;};
-    public void ContactarVendedor(){};
-    public Publicacion GestionarPublicaciones(){return Publicacion;}
-    public void GestionarFormulariosYSolicitudes(){}
-    public void ModificarForo(){}
-    */
+    public void contactSeller(){ //ContactarVendedor
+        //TODO
+    }
+
+    public Listing manageListing(){ //GestionarPublicaciones
+        //TODO
+        return new Listing();
+    }
+
+    public void manageFormsAndRequests(){ //GestionarFormulariosYSolicitudes
+        //TODO
+    }
+
+    public void modifyForums(){ //ModificarForo
+        //TODO
+    }
+
 }
