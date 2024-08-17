@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Entity
 @Table(name = "ChatPost")
 
-public class ChatPost {
+public class ChatPost{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //atributos

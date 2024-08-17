@@ -1,11 +1,14 @@
 package com.inmogo.api.Entity;
 
+import com.inmogo.api.Controller.Person;
 import jakarta.persistence.*;
+
+import java.util.Scanner;
 
 @Entity
 @Table(name = "User")
 
-public class User {
+public class User implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
@@ -30,15 +33,15 @@ public class User {
     }
 
     //Default
-    public User() {
-        this.id = 0;
-        this.name = "Default";
-        this.rut = "123456789";
-        this.email = "example@example.com";
-        this.password = "1234";
-        this.role = "User";
-        this.permission = "User";
-    }
+    //public User() {
+    //    this.id = 0;
+    //    this.name = "Default";
+    //    this.rut = "123456789";
+    //    this.email = "example@example.com";
+    //    this.password = "1234";
+    //    this.role = "User";
+    //    this.permission = "User";
+    //}
 
     //Getters
     public long getId() { return id; }
@@ -57,4 +60,12 @@ public class User {
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
     public void setPermission(String permission) { this.permission = permission; }
+
+    @Override
+    public void getForum() {
+        System.out.println("Ingrese sus dudas al foro");
+        Scanner scan = new Scanner(System.in);
+        String algo = scan.next();
+        System.out.println(getName() + ": " + algo + "\n");
+    }
 }
