@@ -1,6 +1,6 @@
 package com.inmogo.api.Controller;
 
-import com.inmogo.api.Entity.User;
+import com.inmogo.api.Entity.UserTemplate;
 import com.inmogo.api.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
@@ -10,28 +10,32 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/usuario")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
-    private UserService usuarioSer;
+    private UserService userService;
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
     //registra usuario
     @PostMapping("/register")
-    public User register(@RequestBody User newUser){
-        return usuarioSer.register(newUser.getName(), newUser.getRut(), newUser.getEmail(), newUser.getPassword(), newUser.getRole(), newUser.getPermission());
+    public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
+        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
     }
-    //logea user
+
+    //logea usuario
     @PostMapping("/login")
-    public User login(@RequestBody User user){
-        User res = usuarioSer.login(user.getEmail(), user.getPassword());
-        if (res != null) { return res; } else { throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cause description here");}
+    public UserTemplate login(@RequestBody UserTemplate userTemplate){
+        UserTemplate res = userService.login(userTemplate.getEmail(), userTemplate.getPassword());
+        if (res != null) { return res; }
+        else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
+
     //consigue el id de usuario
     @GetMapping("/id")
-    public User getUsuarioById(@RequestParam("id") String id){
+    public UserTemplate getUserById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
-        return usuarioSer.getUsuarioById(Integer.parseInt(id));
+        return userService.getUserById(Integer.parseInt(id));
     }
+
 }
