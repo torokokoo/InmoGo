@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "owner")
-public class Owner extends User {
+public class Owner extends UserTemplate {
 
 
 /*prendiente desarrollar funcionalidades
@@ -18,13 +18,13 @@ public class Owner extends User {
 - PromocionSemanal(): return void
 - PagarBeneficios(): return void
 
-    public Publication publish() {
+    public Listing publish() {
         // Implementar logica
         return new Publication();
     }
 
     // Edit publications method
-    public Publication editPublications() {
+    public Listing editPublications() {
         // Implementar logica
         return new Publication();
     }
