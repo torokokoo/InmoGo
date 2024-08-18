@@ -1,7 +1,6 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "UserTemplate")
 

@@ -1,8 +1,13 @@
 package com.inmogo.api.Entity;
 
 import java.sql.Timestamp;
+import jakarta.persistence.*;
+@Entity
+@Table(name = "ticket")
 
 public class Ticket { //Boleta
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attrib.
     private String paymentType; //tipoDePago, puede ser Boleta o Factura
     private int totalPaid; //totalPagado

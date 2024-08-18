@@ -1,5 +1,9 @@
 package com.inmogo.api.Entity;
 
+import jakarta.persistence.*;
+@Entity
+@Table(name = "userMod")
+
 public class UserMod extends UserTemplate {
     //Constructor
     public UserMod(long id, String name, String rut, String email, String password, String role, String permission) {
