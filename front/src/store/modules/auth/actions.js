@@ -4,7 +4,7 @@ import router from '@/router'
 
 export default {
     async login({ commit }, payload) {
-        const { data } = await axios.post(api + 'api/usuario/login', payload);
+        const { data } = await axios.post(api + 'api/user/login', payload);
         commit('setUser', data);
         localStorage.setItem('user', JSON.stringify(data));
         localStorage.setItem('loggedIn', true);
@@ -12,7 +12,7 @@ export default {
         router.push({ path: '/profile' });
     },
     async register({ commit }, payload) {
-        const { data } = await axios.post(api + 'api/usuario/register', payload);
+        const { data } = await axios.post(api + 'api/user/register', payload);
         commit('setUser', data);
         localStorage.setItem('user', JSON.stringify(data));
         localStorage.setItem('loggedIn', true);
