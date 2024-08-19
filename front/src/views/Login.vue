@@ -8,17 +8,15 @@
         <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
           <div>
             <h2 class="lg:text-5xl text-4xl font-extrabold lg:leading-[55px] text-gray-800">
-              Encuentra tu nuevo hogar
+              Seamless Login for Exclusive Access
             </h2>
-            <p class="text-sm mt-6 text-gray-800">Ingresa a una plataforma donde puedes encontrar y realizar todos los tramites necesarios para encontrar tu nuevo hogar sonado,
-              todo en un solo lugar con InmoGo.
-            </p>
-            <p class="text-sm mt-12 text-gray-800">Si aun no tienes una cuenta, <router-link to="/register" class="text-primary font-semibold hover:underline">registrate aqui</router-link></p>
+            <p class="text-sm mt-6 text-gray-800">Immerse yourself in a hassle-free login journey with our intuitively designed login form. Effortlessly access your account.</p>
+            <p class="text-sm mt-12 text-gray-800">Don't have an account <a href="javascript:void(0);" class="text-blue-600 font-semibold hover:underline ml-1">Register here</a></p>
           </div>
 
           <form class="max-w-md md:ml-auto w-full" @submit.prevent='onSubmit'>
-            <h3 class="text-gray-800 text-primary text-3xl font-extrabold mb-8">
-              Iniciar sesion
+            <h3 class="text-gray-800 text-3xl font-extrabold mb-8">
+              Sign in
             </h3>
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-5 rounded relative" v-if="v$.$errors.length > 0" role="alert">
               <span class="block" v-for="error of v$.$errors" :key="error.$uid">- {{ error.$message }}</span>
@@ -26,16 +24,29 @@
 
             <div class="space-y-4">
               <div>
-                <input name="email" v-model="email" type="text" autocomplete="email" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-primary focus:bg-transparent" placeholder="Correo electronico" />
+                <input name="email" v-model="email" type="text" autocomplete="email" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Email address" />
               </div>
               <div>
-                <input name="password" v-model="password" type="password" autocomplete="current-password" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-primary focus:bg-transparent" placeholder="Contrasena" />
+                <input name="password" v-model="password" type="password" autocomplete="current-password" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent" placeholder="Password" />
+              </div>
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center">
+                  <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                  <label for="remember-me" class="ml-3 block text-sm text-gray-800">
+                    Remember me
+                  </label>
+                </div>
+                <div class="text-sm">
+                  <a href="jajvascript:void(0);" class="text-blue-600 hover:text-blue-500 font-semibold">
+                    Forgot your password?
+                  </a>
+                </div>
               </div>
             </div>
 
             <div class="!mt-8">
-              <button type="submit" class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-primary focus:outline-none">
-                Continuar
+              <button type="submit" class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                Log in
               </button>
             </div>
 

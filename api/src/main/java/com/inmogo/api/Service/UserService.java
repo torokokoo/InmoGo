@@ -1,11 +1,9 @@
 package com.inmogo.api.Service;
 
-import com.inmogo.api.Entity.ChatHistory;
 import com.inmogo.api.Entity.UserTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.inmogo.api.Repository.UserRepository;
-import java.util.ArrayList;
 
 @Service
 public class UserService {
@@ -13,8 +11,8 @@ public class UserService {
     private UserRepository userRepo;
 
     //Register
-    public UserTemplate register(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys){
-        UserTemplate userTemplate = new UserTemplate(id, name, rut, email, password, role, permission, chatHistorys);
+    public UserTemplate register(long id, String name, String rut, String email, String password, String role, String permission){
+        UserTemplate userTemplate = new UserTemplate(id, name, rut, email, password, role, permission);
         UserTemplate exists = userRepo.findByEmail(userTemplate.getEmail());
         System.out.println("Register");
         if (exists != null){

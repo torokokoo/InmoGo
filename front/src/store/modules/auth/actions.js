@@ -7,22 +7,7 @@ export default {
         const { data } = await axios.post(api + 'api/usuario/login', payload);
         commit('setUser', data);
         localStorage.setItem('user', JSON.stringify(data));
-        localStorage.setItem('loggedIn', true);
         commit('setLoggedIn', true);
-        router.push({ path: '/profile' });
+        router.push({ path: '/' });
     },
-    async register({ commit }, payload) {
-        const { data } = await axios.post(api + 'api/usuario/register', payload);
-        commit('setUser', data);
-        localStorage.setItem('user', JSON.stringify(data));
-        localStorage.setItem('loggedIn', true);
-        commit('setLoggedIn', true);
-        router.push({ path: '/profile' });
-    },
-    logout({ commit }) {
-        console.log('logout action')
-        localStorage.setItem('user', JSON.stringify({}));
-        localStorage.setItem('loggedIn', false);
-        commit('reset');
-    }
 }
