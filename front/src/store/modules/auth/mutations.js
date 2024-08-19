@@ -7,7 +7,6 @@ export default {
        state.loggedIn = value; 
     },
     ['reset'](state) {
-        console.log('reset')
         state.user = {};
         state.loggedIn = false;
     },

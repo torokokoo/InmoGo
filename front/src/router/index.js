@@ -33,9 +33,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !store.getters['auth/loggedIn']) {
+  const loggedIn = window.localStorage.getItem('loggedIn') || 'false'
+  console.log(to.meta.requiresAuth && !loggedIn)
+  if (to.meta.requiresAuth && loggedIn === 'false') {
     next({ path: '/login' });
   } else {
+    console.log('no necesita autorizacion')
     next();
   }
 })

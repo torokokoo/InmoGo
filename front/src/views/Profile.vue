@@ -11,13 +11,11 @@
 
     }),
     methods: {
-      ...mapActions('auth', ['logout']),
-      async logout() {
-        await this['logout']
-        console.log(await this['logout'])
-        console.log('logout')
-        router.push('/')
-      }
-    }
+      ...mapActions(['auth/logout']),
+      logout() {
+          this.$store.dispatch('auth/logout')
+          router.push({ path: '/' }) 
+        }
+    },
   }
 </script>
