@@ -1,13 +1,17 @@
 package com.inmogo.api.Entity;
 
+import com.inmogo.api.Controller.Person;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 @Entity
 @Table(name = "UserTemplate")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 
-public class UserTemplate {
+public class UserTemplate implements Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
@@ -18,10 +22,10 @@ public class UserTemplate {
     private String password;
     private String role;
     private String permission;
-    //private ArrayList<ChatHistory> chatHistory;
+    private ArrayList<ChatHistory> chatHistory;
 
     //Constructor
-    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
+    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys) {
         this.id = id;
         this.name = name;
         this.rut = rut;
@@ -29,11 +33,14 @@ public class UserTemplate {
         this.password = password;
         this.role = role;
         this.permission = permission;
-        //this.chatHistory = chatHistory
+        this.chatHistory = chatHistorys;
     }
 
     public UserTemplate() {
 
+    }
+
+    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
     }
 /*
     //Default
@@ -45,7 +52,7 @@ public class UserTemplate {
         this.password = "1234";
         this.role = "UserTemplate";
         this.permission = "UserTemplate";
-        //this.chatHistory = new ArrayList<ChatHistory>();
+        this.chatHistory = new ArrayList<ChatHistory>();
     }
 
  */
@@ -58,7 +65,7 @@ public class UserTemplate {
     public String getPassword() { return password; }
     public String getRole() { return role; } //ConseguirRol
     public String getPermission() { return permission; } //ConseguirPermiso
-    //public ArrayList<ChatHistory> getChatHistory() { return chatHistory; }
+    public ArrayList<ChatHistory> getChatHistory() { return chatHistory; }
 
     //Setters
     public void setId(long id) { this.id = id; }
@@ -68,7 +75,7 @@ public class UserTemplate {
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
     public void setPermission(String permission) { this.permission = permission; }
-    //public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
+    public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
 
     //Other Methods
     public void enterChatMode(){ //IngresarChatDeMensajeria
@@ -77,6 +84,14 @@ public class UserTemplate {
 
     public void displayHistory(){ //MostrarHistorial
         //contenido
+    }
+
+    @Override
+    public void getForum() {
+        System.out.println("Ingrese sus dudas al foro");
+        Scanner scan = new Scanner(System.in);
+        String something = scan.next();
+        System.out.println(getName() + ": " + something + "\n");
     }
 
 }

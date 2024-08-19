@@ -6,10 +6,12 @@ import java.util.*;
 @Entity
 @DiscriminatorValue("UserMod")
 
+import java.util.ArrayList;
+
 public class UserMod extends UserTemplate {
     //Constructor
-    public UserMod(long id, String name, String rut, String email, String password, String role, String permission) {
-        super(id, name, rut, email, password, role, permission);
+    public UserMod(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys) {
+        super(id, name, rut, email, password, role, permission, chatHistorys);
     }
 
     public UserMod(){
