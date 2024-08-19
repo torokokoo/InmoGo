@@ -9,13 +9,14 @@ import java.sql.Timestamp;
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //Attributes
-    private String title; //titulo
-    private Timestamp publishDate; //publishDate
-    private String notesFromPropietary; //notesFromPropietary
-    private int rankingPos; //PosicionRanking
+    private Long id; // Nueva columna de identidad
 
-    //Construct
+    private String title;
+    private Timestamp publishDate;
+    private String notesFromPropietary;
+    private int rankingPos;
+
+    // Constructores
     public Listing(String title, Timestamp publishDate, String notesFromPropietary, int rankingPos){
         this.title = title;
         this.publishDate = publishDate;
@@ -30,20 +31,21 @@ public class Listing {
         this.rankingPos = 1;
     }
 
-    //Getter
-    public String getTitle(){return this.title;}
-    public Timestamp getPublishDate(){return this.publishDate;}
-    public String getNotesFromPropietary(){return this.notesFromPropietary;}
-    public int getRankingPos(){return this.rankingPos;}
+    // Getters y Setters
+    public Long getId(){ return this.id; }
+    public String getTitle(){ return this.title; }
+    public Timestamp getPublishDate(){ return this.publishDate; }
+    public String getNotesFromPropietary(){ return this.notesFromPropietary; }
+    public int getRankingPos(){ return this.rankingPos; }
 
-    //Setter
-    public void setTitle(String title){this.title = title;}
-    public void setPublishDate(Timestamp publishDate){this.publishDate = publishDate;}
-    public void setNotesFromPropietary(String notesFromPropietary){this.notesFromPropietary = notesFromPropietary;}
-    public void setRankingPos(int rankingPos){this.rankingPos = rankingPos;}
+    public void setId(Long id){ this.id = id; }
+    public void setTitle(String title){ this.title = title; }
+    public void setPublishDate(Timestamp publishDate){ this.publishDate = publishDate; }
+    public void setNotesFromPropietary(String notesFromPropietary){ this.notesFromPropietary = notesFromPropietary; }
+    public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
 
-    //Metodos
-    public void requestForm(){ //solicitarFormulario
-        //contenido
+    // Métodos
+    public void requestForm(){
+        // contenido
     }
 }
