@@ -1,8 +1,14 @@
 package com.inmogo.api.Entity;
 
+import jakarta.persistence.*;
+
 import java.util.*;
 
+@Entity
+@Table(name="Property")
 public class Property {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Atributos
     private String name;
     private String address;

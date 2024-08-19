@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "UserTemplate")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 
 public class UserTemplate {
     @Id
@@ -30,6 +32,10 @@ public class UserTemplate {
         //this.chatHistory = chatHistory
     }
 
+    public UserTemplate() {
+
+    }
+/*
     //Default
     public UserTemplate() {
         this.id = 0;
@@ -41,6 +47,8 @@ public class UserTemplate {
         this.permission = "UserTemplate";
         //this.chatHistory = new ArrayList<ChatHistory>();
     }
+
+ */
 
     //Getters
     public long getId() { return id; }
@@ -64,11 +72,11 @@ public class UserTemplate {
 
     //Other Methods
     public void enterChatMode(){ //IngresarChatDeMensajeria
-        //TODO
+        //contenido
     }
 
     public void displayHistory(){ //MostrarHistorial
-        //TODO
+        //contenido
     }
 
 }
