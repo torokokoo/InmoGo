@@ -9,7 +9,8 @@ import java.util.*;
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // Atributos
+    private Long id; // Nueva columna de identidad
+
     private String name;
     private String address;
     private String district;
@@ -34,64 +35,26 @@ public class Property {
 
     }
 
-    // Rescates
-    public String getName() {
-        return name;
-    }
+    // Getters y Setters
+    public Long getId() { return this.id; }
+    public String getName() { return this.name; }
+    public String getAddress() { return this.address; }
+    public String getDistrict() { return this.district; }
+    public String getDescription() { return this.description; }
+    public String getSectorDescription() { return this.sectorDescription; }
+    public ArrayList<String> getImages() { return this.images; }
+    public String getDimensions() { return this.dimensions; }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getSectorDescription() {
-        return sectorDescription;
-    }
-
-    public ArrayList<String> getImages() {
-        return images;
-    }
-
-    public String getDimensions() {
-        return dimensions;
-    }
-
-    // Modificadores, establecedores
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setSectorDescription(String sectorDescription) {
-        this.sectorDescription = sectorDescription;
-    }
-
-    public void setImages(ArrayList<String> images) {
-        this.images = images;
-    }
-
-    public void setDimensions(String dimensions) {
-        this.dimensions = dimensions;
-    }
+    public void setId(Long id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setAddress(String address) { this.address = address; }
+    public void setDistrict(String district) { this.district = district; }
+    public void setDescription(String description) { this.description = description; }
+    public void setSectorDescription(String sectorDescription) { this.sectorDescription = sectorDescription; }
+    public void setImages(ArrayList<String> images) { this.images = images; }
+    public void setDimensions(String dimensions) { this.dimensions = dimensions; }
 }
+
 
 /*
 PENDIENTE POR HACER
