@@ -9,7 +9,23 @@ import java.util.*;
 @Entity
 @Table(name = "owner")
 public class Owner extends UserTemplate {
+    private List<Listing> listings = new ArrayList<>();
+    
+     public Listing publish(String title, String notesFromPropietary, int rankingPos) {
+        Listing newListing = new Listing(title, new Timestamp(System.currentTimeMillis()), notesFromPropietary, rankingPos);
+        listings.add(newListing);
+        
+        return newListing;
+    }
 
+    public Listing editPublications(Listing listing, String newTitle, String newNotes, int newRankingPos){
+        listing.setTitle(newTitle);
+        listing.publishDate(new Timestamp(System.currentTimeMillis()));
+        listing.setNotesFromPropietary(newNotes);
+        listing.setRankingPos(newRankingPos);
+        
+        return listing;
+    }	
 
 /*prendiente desarrollar funcionalidades
 
