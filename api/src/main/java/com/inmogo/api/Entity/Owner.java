@@ -18,7 +18,7 @@ public class Owner extends UserTemplate {
         return newListing;
     }
 
-    public Listing editPublications(Listing listing, String newTitle, String newNotes, int newRankingPos){
+    public Listing editPublish(Listing listing, String newTitle, String newNotes, int newRankingPos){
         listing.setTitle(newTitle);
         listing.publishDate(new Timestamp(System.currentTimeMillis()));
         listing.setNotesFromPropietary(newNotes);
