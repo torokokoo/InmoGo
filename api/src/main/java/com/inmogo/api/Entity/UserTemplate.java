@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 @Entity
 @Table(name = "UserTemplate")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 
 public class UserTemplate implements Person {
     @Id
@@ -34,6 +36,13 @@ public class UserTemplate implements Person {
         this.chatHistory = chatHistorys;
     }
 
+    public UserTemplate() {
+
+    }
+
+    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
+    }
+/*
     //Default
     public UserTemplate() {
         this.id = 0;
@@ -45,6 +54,8 @@ public class UserTemplate implements Person {
         this.permission = "UserTemplate";
         this.chatHistory = new ArrayList<ChatHistory>();
     }
+
+ */
 
     //Getters
     public long getId() { return id; }
@@ -68,11 +79,11 @@ public class UserTemplate implements Person {
 
     //Other Methods
     public void enterChatMode(){ //IngresarChatDeMensajeria
-        //TODO
+        //contenido
     }
 
     public void displayHistory(){ //MostrarHistorial
-        //TODO
+        //contenido
     }
 
     @Override

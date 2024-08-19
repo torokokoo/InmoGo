@@ -1,8 +1,14 @@
 package com.inmogo.api.Entity;
 
+import jakarta.persistence.*;
+
 import java.sql.Timestamp;
 
+@Entity
+@Table(name="Listing")
 public class Listing {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
     private String title; //titulo
     private Timestamp publishDate; //publishDate
@@ -38,6 +44,6 @@ public class Listing {
 
     //Metodos
     public void requestForm(){ //solicitarFormulario
-        //TODO
+        //contenido
     }
 }

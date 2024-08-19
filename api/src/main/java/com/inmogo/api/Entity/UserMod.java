@@ -1,4 +1,10 @@
 package com.inmogo.api.Entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.*;
+@Entity
+@DiscriminatorValue("UserMod")
 
 import java.util.ArrayList;
 

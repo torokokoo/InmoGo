@@ -7,26 +7,35 @@ import java.util.*;
 //Clase de los Propietarios de inmuebles heradado de user
 
 @Entity
-@Table(name = "owner")
+@DiscriminatorValue("Owner")
 public class Owner extends UserTemplate {
 
 
-/*prendiente desarrollar funcionalidades
+    public Owner(long id, String name, String rut, String email, String password, String role, String permission) {
+        super(id, name, rut, email, password, role, permission);
+    }
 
-- Publicar(): return Publicación
-- EditarPublicaciones(): return Publicación
-- PromocionSemanal(): return void
-- PagarBeneficios(): return void
+    public Owner() {
 
+    }
+
+
+    /*prendiente desarrollar funcionalidades
+
+    - Publicar(): return Publicación
+    - EditarPublicaciones(): return Publicación
+    - PromocionSemanal(): return void
+    - PagarBeneficios(): return void
+    */
     public Listing publish() {
         // Implementar logica
-        return new Publication();
+        return new Listing();
     }
 
     // Edit publications method
     public Listing editPublications() {
         // Implementar logica
-        return new Publication();
+        return new Listing();
     }
 
     // Weekly promotion method (void return type)
@@ -39,7 +48,7 @@ public class Owner extends UserTemplate {
     public void payBenefits() {
         // Implementar logica
     }
- */
+
 
 
 }
