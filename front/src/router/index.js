@@ -3,14 +3,18 @@ import { createWebHistory, createRouter } from "vue-router";
 import Login from "../views/Login.vue";
 import Home from '@/views/Home'
 import Profile from '@/views/Profile'
-
-import store from '@/store/store.js';
+import Register from '@/views/Register'
 
 const routes = [
   { 
     name: 'Login',
     path: "/login",
     component: Login
+  },
+  {
+    name: 'Register',
+    path: '/register',
+    component: Register
   },
   {
     name: 'Home',
@@ -34,11 +38,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const loggedIn = window.localStorage.getItem('loggedIn') || 'false'
-  console.log(to.meta.requiresAuth && !loggedIn)
   if (to.meta.requiresAuth && loggedIn === 'false') {
     next({ path: '/login' });
   } else {
-    console.log('no necesita autorizacion')
     next();
   }
 })
