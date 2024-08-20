@@ -1,11 +1,9 @@
 package com.inmogo.api.Entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.*;
+
 @Entity
 @DiscriminatorValue("UserAdmin")
-
 public class UserAdmin extends UserTemplate {
     //Constructor
     public UserAdmin(long id, String name, String rut, String email, String password, String role, String permission) {

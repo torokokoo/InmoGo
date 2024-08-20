@@ -3,9 +3,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
 import java.util.*;
+import java.util.ArrayList;
+
 @Entity
 @DiscriminatorValue("UserMod")
-
 public class UserMod extends UserTemplate {
     //Constructor
     public UserMod(long id, String name, String rut, String email, String password, String role, String permission) {

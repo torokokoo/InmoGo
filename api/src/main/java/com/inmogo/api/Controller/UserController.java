@@ -17,13 +17,13 @@ public class UserController {
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
-    //registra usuario
+    //Registra al Usuario
     @PostMapping("/register")
     public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
-        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
+        return userService.register(newUserTemplate);
     }
 
-    //logea usuario
+    //Logea al Usuario
     @PostMapping("/login")
     public UserTemplate login(@RequestBody UserTemplate userTemplate){
         UserTemplate res = userService.login(userTemplate.getEmail(), userTemplate.getPassword());
@@ -31,11 +31,11 @@ public class UserController {
         else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
 
-    //consigue el id de usuario
+    //Retorna al Usuario por su ID.
     @GetMapping("/id")
     public UserTemplate getUserById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
-        return userService.getUserById(Integer.parseInt(id));
+        return userService.findUserById(Long.parseLong(id));
     }
 
 }
