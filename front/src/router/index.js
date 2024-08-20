@@ -4,6 +4,8 @@ import Login from "../views/Login.vue";
 import Home from '@/views/Home'
 import Profile from '@/views/Profile'
 import Register from '@/views/Register'
+import PostProperty from '@/views/PostProperty'
+import Listings from '@/views/Listings'
 
 const routes = [
   { 
@@ -28,6 +30,19 @@ const routes = [
     meta: {
       requiresAuth: true,
     }
+  },
+  {
+    name: 'PostProperty',
+    path: '/post',
+    component: PostProperty,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    name: 'Listings',
+    path: '/listings',
+    component: Listings,
   }
 ];
 
