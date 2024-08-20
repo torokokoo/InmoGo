@@ -70,13 +70,5 @@ public class UserTemplate {
     public void setPermission(String permission) { this.permission = permission; }
     //public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
 
-    //Other Methods
-    public void enterChatMode(){ //IngresarChatDeMensajeria
-        //contenido
-    }
-
-    public void displayHistory(){ //MostrarHistorial
-        //contenido
-    }
 
 }

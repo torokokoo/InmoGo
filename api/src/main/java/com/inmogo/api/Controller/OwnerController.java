@@ -1,16 +1,26 @@
 package com.inmogo.api.Controller;
 
+import com.inmogo.api.Entity.Listing;
+import com.inmogo.api.Entity.Owner;
 import com.inmogo.api.Service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/Api/Owner")
+
+@ResponseBody
+
+
 public class OwnerController {
     @Autowired
     private OwnerService ownerService;
-    //PENDIENTE LOGICA DEL SERVICIO
+
+
+    @PostMapping("/post")
+    public Listing post(@RequestBody Listing newListing) {
+        System.out.printf("Creando publicacion");
+        return ownerService.post(newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
+    }
 }

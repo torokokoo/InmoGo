@@ -20,36 +20,5 @@ public class Owner extends UserTemplate {
     }
 
 
-    /*prendiente desarrollar funcionalidades
-
-    - Publicar(): return Publicación
-    - EditarPublicaciones(): return Publicación
-    - PromocionSemanal(): return void
-    - PagarBeneficios(): return void
-    */
-    public Listing publish() {
-        // Implementar logica
-        return new Listing();
-    }
-
-    // Edit publications method
-    public Listing editPublications() {
-        // Implementar logica
-        return new Listing();
-    }
-
-    // Weekly promotion method (void return type)
-    public void weeklyPromotion() {
-        // Implementar logica
-    }
-
-    // Pay benefits method (void return type)
-
-    public void payBenefits() {
-        // Implementar logica
-    }
-
-
-
 }
 
