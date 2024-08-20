@@ -29,35 +29,17 @@ public class ChatHistory {
         this.contacts = contacts;
     }
 
-    public ChatHistory(){
-
-    }
+    public ChatHistory(){}
 
     //Getters
-    public long getId() {
-        return id;
-    }
-
-    public UserTemplate getUserOwner() {
-        return userOwner;
-    }
-
-    public List<UserTemplate> getContacts() {
-        return contacts;
-    }
+    public long getId() { return id; }
+    public UserTemplate getUserOwner() { return userOwner; }
+    public List<UserTemplate> getContacts() { return contacts; }
 
     //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setUserOwner(UserTemplate userOwner) {
-        this.userOwner = userOwner;
-    }
-
-    public void setContacts(List<UserTemplate> contacts) {
-        this.contacts = contacts;
-    }
+    public void setId(long id) { this.id = id; }
+    public void setUserOwner(UserTemplate userOwner) { this.userOwner = userOwner; }
+    public void setContacts(List<UserTemplate> contacts) { this.contacts = contacts; }
 
     //Otros Metodos
 

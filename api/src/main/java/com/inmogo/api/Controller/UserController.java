@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/userTemplate")
+
 public class UserController {
     @Autowired
     private UserService userService;

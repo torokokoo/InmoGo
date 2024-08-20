@@ -16,9 +16,7 @@ public class UserOwner extends UserTemplate {
     }
 
     public UserOwner() {
-
+        super();
     }
-
-
 }
 

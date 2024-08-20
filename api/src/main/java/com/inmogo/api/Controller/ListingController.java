@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/Api/Listing")
 
 public class ListingController {
-
     @Autowired
     private ListingService listingService;
     @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
-        System.out.printf("Creando publicacion");
-        return listingService.post(newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
+        System.out.println("Creando publicacion");
+        return listingService.post(newListing.getId(), newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
     }
 }

@@ -74,7 +74,6 @@ public class UserTemplate {
         //contenido
     }
 
-    @Override
     public void getForum() {
         System.out.println("Ingrese sus dudas al foro");
         Scanner scan = new Scanner(System.in);

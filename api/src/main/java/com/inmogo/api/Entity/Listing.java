@@ -3,8 +3,6 @@ package com.inmogo.api.Entity;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import jakarta.persistence.*;
-@Entity
-@Table(name = "listing")
 
 /**
  * Publicaciones.

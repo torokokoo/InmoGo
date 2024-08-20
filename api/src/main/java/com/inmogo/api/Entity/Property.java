@@ -1,7 +1,6 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
-
 import java.util.*;
 
 @Entity
@@ -9,30 +8,29 @@ import java.util.*;
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // Nueva columna de identidad
+    private long id;
 
     private String name;
     private String address;
     private String district;
     private String description;
     private String sectorDescription;
-    private ArrayList<String> images;
     private String dimensions;
+    private ArrayList<String> images;
 
     // Constructor
-    public Property(String name, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions) {
+    public Property(long id, String name, String address, String district, String description, String sectorDescription, String dimensions, ArrayList<String> images) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.district = district;
         this.description = description;
         this.sectorDescription = sectorDescription;
-        this.images = images;
         this.dimensions = dimensions;
+        this.images = images;
     }
 
-    public Property(){
-
-    }
+    public Property(){}
 
     // Getters y Setters
     public Long getId() { return this.id; }
@@ -41,8 +39,8 @@ public class Property {
     public String getDistrict() { return this.district; }
     public String getDescription() { return this.description; }
     public String getSectorDescription() { return this.sectorDescription; }
-    public ArrayList<String> getImages() { return this.images; }
     public String getDimensions() { return this.dimensions; }
+    public ArrayList<String> getImages() { return this.images; }
 
     public void setId(Long id) { this.id = id; }
     public void setName(String name) { this.name = name; }
@@ -50,8 +48,8 @@ public class Property {
     public void setDistrict(String district) { this.district = district; }
     public void setDescription(String description) { this.description = description; }
     public void setSectorDescription(String sectorDescription) { this.sectorDescription = sectorDescription; }
-    public void setImages(ArrayList<String> images) { this.images = images; }
     public void setDimensions(String dimensions) { this.dimensions = dimensions; }
+    public void setImages(ArrayList<String> images) { this.images = images; }
 }
 
 

@@ -4,7 +4,6 @@ import com.inmogo.api.Entity.UserTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.inmogo.api.Repository.UserRepository;
-import java.util.Optional;
 
 @Service
 public class UserService {
