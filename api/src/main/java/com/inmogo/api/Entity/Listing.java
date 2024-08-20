@@ -2,6 +2,9 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import jakarta.persistence.*;
+@Entity
+@Table(name = "listing")
 
 /**
  * Publicaciones.
@@ -10,6 +13,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="Listing")
 public class Listing {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

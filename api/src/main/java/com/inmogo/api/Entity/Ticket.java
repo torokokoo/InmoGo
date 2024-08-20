@@ -2,6 +2,9 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import jakarta.persistence.*;
+@Entity
+@Table(name = "ticket")
 
 /**
  * Boletas.
@@ -10,6 +13,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="Ticket")
 public class Ticket { //Boleta
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attrib.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
