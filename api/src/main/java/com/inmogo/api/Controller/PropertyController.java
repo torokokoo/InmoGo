@@ -14,7 +14,7 @@ public class PropertyController {
     @Autowired
     private PropertyService propertyService;
 
-    @PostMapping("/createproperty")
+    @PostMapping("/create")
     public Property createproperty(@RequestBody Property newProperty){
         return propertyService.createproperty(newProperty.getName(), newProperty.getAddress(), newProperty.getDistrict(), newProperty.getDescription(), newProperty.getDescription(), newProperty.getSectorDescription(), newProperty.getImages(), newProperty.getDimensions());
     }

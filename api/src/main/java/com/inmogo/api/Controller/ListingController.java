@@ -13,7 +13,7 @@ public class ListingController {
 
     @Autowired
     private ListingService listingService;
-    @PostMapping("/post")
+    @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
         System.out.printf("Creando publicacion");
         return listingService.post(newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
