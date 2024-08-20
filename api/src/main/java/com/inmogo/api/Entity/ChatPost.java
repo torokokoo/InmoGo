@@ -1,55 +1,53 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
-
 import java.sql.Timestamp;
-import java.util.ArrayList;
+
+/**
+ * Representa el mensaje que un usuario ha hecho a otro.
+ */
 
 @Entity
 @Table(name = "ChatPost")
-
 public class ChatPost{
+    //Attrib
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //atributos
-    private long IdChat;
-    private UserTemplate UserReceptor;
-    private UserTemplate UserTransmitter;
-    private ArrayList<String> MsmHistory;
-    private Timestamp MsmDate;
+    private long id;
 
-    //constructor
-    public ChatPost(long idChat, UserTemplate userReceptor, UserTemplate userTrans, ArrayList<String> MessageHistory, Timestamp MsmDates) {
-        IdChat = idChat;
-        UserReceptor = userReceptor;
-        UserTransmitter = userTrans;
-        MsmHistory = MessageHistory;
-        MsmDate = MsmDates;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private UserTemplate emitter;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private UserTemplate receiver;
+
+    private String message;
+    private Timestamp msgTimestamp;
+
+    //Constructor
+    public ChatPost(long id, UserTemplate emitter, UserTemplate receiver, String message, Timestamp msgTimestamp) {
+        this.id = id;
+        this.emitter = emitter;
+        this.receiver = receiver;
+        this.message = message;
+        this.msgTimestamp = msgTimestamp;
     }
+    //Default
+    public ChatPost(){}
 
-    //getters y setters
+    //Getters
+    public long getId() { return id; }
+    public UserTemplate getEmitter() { return emitter; }
+    public UserTemplate getReceiver() { return receiver; }
+    public String getMessage() { return message; }
+    public Timestamp getMsgTimestamp() { return msgTimestamp; }
 
-    public long getIdChat() { return IdChat; }
-
-    public void setIdChat(long idChat) { IdChat = idChat; }
-
-    public UserTemplate getUserReceptor() { return UserReceptor; }
-
-    public void setUserReceptor(UserTemplate UserRec) { UserReceptor = UserRec; }
-
-    public ArrayList<String> getMsmHistory() { return MsmHistory; }
-
-    public void setMsmHistory(ArrayList<String> MsmHist) { MsmHistory = MsmHist; }
-
-    public UserTemplate getUserTransmitter() { return UserTransmitter; }
-
-    public void setUserTransmitter(UserTemplate userTrans) { UserTransmitter = userTrans; }
-
-    public Timestamp getMsmDate() { return MsmDate; }
-
-    public void setMsmDate(Timestamp dateMessage) { MsmDate = dateMessage; }
-
-    //metodos
-
-    //tengo que analizar a profundidad esto
+    //Setters
+    public void setId(long id) { this.id = id; }
+    public void setEmitter(UserTemplate emitter) { this.emitter = emitter; }
+    public void setReceiver(UserTemplate receiver) { this.receiver = receiver; }
+    public void setMessage(String message) { this.message = message; }
+    public void setMsgTimestamp(Timestamp msgTimestamp) { this.msgTimestamp = msgTimestamp; }
 }

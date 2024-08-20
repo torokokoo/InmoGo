@@ -1,54 +1,77 @@
 package com.inmogo.api.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.sql.Timestamp;
+/**
+ * Representa el Historial de Chats de un usuario.
+ * Organiza a un grupo de usuarios con los que un usuario principal ha interactuado.
+ */
 
 @Entity
 @Table(name = "ChatHistory")
-
 public class ChatHistory {
-    //atributos
-    private String Conversation;
-    private String ReceptorRut;
-    private Timestamp InitialDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    //constructor
-    public ChatHistory(String conversation, String receptorRut, Timestamp initialDate) {
-        Conversation = conversation;
-        ReceptorRut = receptorRut;
-        InitialDate = initialDate;
+    @OneToOne
+    private UserTemplate userOwner;
+
+    @ManyToMany
+    private List<UserTemplate> contacts = new LinkedList<>();
+
+    //Constructors
+    public ChatHistory(long id, UserTemplate userOwner, List<UserTemplate> contacts) {
+        this.id = id;
+        this.userOwner = userOwner;
+        this.contacts = contacts;
     }
 
-    //getters y setters
+    public ChatHistory(){
 
-    public String getConversation() {
-        return Conversation;
     }
 
-    public void setConversation(String conversation) {
-        Conversation = conversation;
+    //Getters
+    public long getId() {
+        return id;
     }
 
-    public String getReceptorRut() {
-        return ReceptorRut;
+    public UserTemplate getUserOwner() {
+        return userOwner;
     }
 
-    public void setReceptorRut(String receptorRut) {
-        ReceptorRut = receptorRut;
+    public List<UserTemplate> getContacts() {
+        return contacts;
     }
 
-    public Timestamp getInitialDate() {
-        return InitialDate;
+    //Setters
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setInitialDate(Timestamp initialDate) {
-        InitialDate = initialDate;
+    public void setUserOwner(UserTemplate userOwner) {
+        this.userOwner = userOwner;
     }
 
-    //metodos
-    public void printConversation(){
-        System.out.printf("\n" + getConversation() + "\n");
+    public void setContacts(List<UserTemplate> contacts) {
+        this.contacts = contacts;
+    }
+
+    //Otros Metodos
+
+    /**
+     * Asigna a un usuario especifico al tope de la lista de contactos.
+     * Si este esta en la lista, lo mueve.
+     * Si este no esta en la lista, lo agrega y lo mueve.
+     * @param contact El Usuario al que asigna al tope.
+     */
+    public void updateContactPosition(UserTemplate contact){
+        if (contacts.contains(contact)){
+            //Existe, entonces lo remueve para moverlo.
+            contacts.remove(contact);
+        }
+        contacts.add(contact);
     }
 }

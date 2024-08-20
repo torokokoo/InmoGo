@@ -1,15 +1,19 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
-
 import java.sql.Timestamp;
+
+/**
+ * Boletas.
+ */
 
 @Entity
 @Table(name="Ticket")
 public class Ticket { //Boleta
+    //Attrib.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //Attrib.
+    private long id;
     private String paymentType; //tipoDePago, puede ser Boleta o Factura
     private int totalPaid; //totalPagado
     private int ticketID; //numeroDeBoleta
@@ -17,7 +21,8 @@ public class Ticket { //Boleta
     private String sellerRUT; //rutVendedor
 
     //Construct
-    public Ticket(String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {
+    public Ticket(long id, String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {
+        this.id = id;
         this.paymentType = paymentType;
         this.totalPaid = totalPaid;
         this.ticketID = ticketID;
@@ -25,15 +30,10 @@ public class Ticket { //Boleta
         this.sellerRUT = sellerRUT;
     }
 
-    public Ticket(){
-        this.paymentType = "Boleta";
-        this.totalPaid = 0;
-        this.ticketID = 1;
-        this.date = new Timestamp(System.currentTimeMillis());;
-        this.sellerRUT = "12345678-9";
-    }
+    public Ticket(){ }
 
     //Getter
+    public long getId() { return id; }
     public String getPaymentType() { return paymentType; }
     public int getTotalPaid() { return totalPaid; }
     public int getTicketID() { return ticketID; }
@@ -41,6 +41,7 @@ public class Ticket { //Boleta
     public String getSellerRUT() { return sellerRUT; }
 
     //Setter
+    public void setId(long id) {this.id = id;}
     public void setPaymentType(String paymentType) { this.paymentType = paymentType; }
     public void setTotalPaid(int totalPaid) { this.totalPaid = totalPaid; }
     public void setTicketID(int ticketID) { this.ticketID = ticketID; }

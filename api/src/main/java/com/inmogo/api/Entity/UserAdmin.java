@@ -1,17 +1,13 @@
 package com.inmogo.api.Entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.*;
+
 @Entity
 @DiscriminatorValue("UserAdmin")
-
-import java.util.ArrayList;
-
 public class UserAdmin extends UserTemplate {
     //Constructor
-    public UserAdmin(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys) {
-        super(id, name, rut, email, password, role, permission, chatHistorys);
+    public UserAdmin(long id, String name, String rut, String email, String password, String role, String permission) {
+        super(id, name, rut, email, password, role, permission);
     }
 
     public UserAdmin(){

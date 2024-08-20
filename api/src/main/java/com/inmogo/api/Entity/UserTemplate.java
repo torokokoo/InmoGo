@@ -1,31 +1,34 @@
 package com.inmogo.api.Entity;
 
-import com.inmogo.api.Controller.Person;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Representa al "esqueleto" de lo que se compone un usuario.
+ * Correspondera a la estructura general de todas las personas que interactuan con el sistema.
+ * Los roles como Admin, Mod, Propietario, y Arrendatario estaran en clases separadas.
+ */
+
 @Entity
 @Table(name = "UserTemplate")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
-
-public class UserTemplate implements Person {
+public class UserTemplate {
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //Attributes
-    private long id;
+    private Long id;
     private String name;
     private String rut;
     private String email;
     private String password;
     private String role;
     private String permission;
-    private ArrayList<ChatHistory> chatHistory;
+
+    @OneToMany
+    private ArrayList<ChatHistory> chatHistory = new ArrayList<ChatHistory>();;
 
     //Constructor
-    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys) {
+    public UserTemplate(Long id, String name, String rut, String email, String password, String role, String permission) {
         this.id = id;
         this.name = name;
         this.rut = rut;
@@ -33,29 +36,11 @@ public class UserTemplate implements Person {
         this.password = password;
         this.role = role;
         this.permission = permission;
-        this.chatHistory = chatHistorys;
     }
 
+    //Constructor Default
     public UserTemplate() {
-
     }
-
-    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
-    }
-/*
-    //Default
-    public UserTemplate() {
-        this.id = 0;
-        this.name = "Default";
-        this.rut = "123456789";
-        this.email = "example@example.com";
-        this.password = "1234";
-        this.role = "UserTemplate";
-        this.permission = "UserTemplate";
-        this.chatHistory = new ArrayList<ChatHistory>();
-    }
-
- */
 
     //Getters
     public long getId() { return id; }
@@ -76,22 +61,4 @@ public class UserTemplate implements Person {
     public void setRole(String role) { this.role = role; }
     public void setPermission(String permission) { this.permission = permission; }
     public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
-
-    //Other Methods
-    public void enterChatMode(){ //IngresarChatDeMensajeria
-        //contenido
-    }
-
-    public void displayHistory(){ //MostrarHistorial
-        //contenido
-    }
-
-    @Override
-    public void getForum() {
-        System.out.println("Ingrese sus dudas al foro");
-        Scanner scan = new Scanner(System.in);
-        String something = scan.next();
-        System.out.println(getName() + ": " + something + "\n");
-    }
-
 }
