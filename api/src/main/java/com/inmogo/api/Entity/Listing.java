@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Nueva columna de identidad
+    private long id; // Nueva columna de identidad
 
     private String title;
     private Timestamp publishDate;
@@ -24,12 +24,10 @@ public class Listing {
         this.rankingPos = rankingPos;
     }
 
-    public Listing(){
-        this.title = "Publicacion de Prueba";
-        this.publishDate = new Timestamp(System.currentTimeMillis());
-        this.notesFromPropietary = "Notas de Propietario";
-        this.rankingPos = 1;
+    public Listing() {
+
     }
+
 
     // Getters y Setters
     public Long getId(){ return this.id; }
@@ -45,7 +43,5 @@ public class Listing {
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
 
     // Métodos
-    public void requestForm(){
-        // contenido
-    }
+
 }
