@@ -9,7 +9,7 @@ import java.util.*;
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Nueva columna de identidad
+    private long id; // Nueva columna de identidad
 
     private String name;
     private String address;
@@ -20,8 +20,7 @@ public class Property {
     private String dimensions;
 
     // Constructor
-    public Property(String name, String address, String district, String description,
-                    String sectorDescription, ArrayList<String> images, String dimensions) {
+    public Property(String name, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions) {
         this.name = name;
         this.address = address;
         this.district = district;

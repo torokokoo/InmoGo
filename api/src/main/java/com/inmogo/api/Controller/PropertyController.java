@@ -1,12 +1,21 @@
 package com.inmogo.api.Controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.inmogo.api.Entity.Property;
+import com.inmogo.api.Service.OwnerService;
+import com.inmogo.api.Service.PropertyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/Api/Property")
+
 public class PropertyController {
-    //PENDIENTE VER SI TENDRA LOGICA DE SERVICIO, pareciera que no
+    @Autowired
+    private PropertyService propertyService;
+
+    @PostMapping("/createproperty")
+    public Property createproperty(@RequestBody Property newProperty){
+        return propertyService.createproperty(newProperty.getName(), newProperty.getAddress(), newProperty.getDistrict(), newProperty.getDescription(), newProperty.getDescription(), newProperty.getSectorDescription(), newProperty.getImages(), newProperty.getDimensions());
+    }
 }

@@ -10,17 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping("/Api/Owner")
 
-@ResponseBody
-
 
 public class OwnerController {
     @Autowired
     private OwnerService ownerService;
 
-
-    @PostMapping("/post")
-    public Listing post(@RequestBody Listing newListing) {
-        System.out.printf("Creando publicacion");
-        return ownerService.post(newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
-    }
 }

@@ -26,11 +26,7 @@ public class OwnerService {
     @Autowired
     private OwnerRepository OwnerRepo;
 
-    public Listing post(String title, String notesFromPropietary, int rankingPos) {
-        Date time = new Date();
-        Timestamp publishDate = new Timestamp(time.getTime());
-        return new Listing(title, publishDate, notesFromPropietary, rankingPos);
-    }
+
 
 /*
     // Edit publications method
