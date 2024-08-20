@@ -13,7 +13,7 @@
     </div>
     <!--  -->
     <div class="mt-3 flex space-x-12">
-            <router-link to="/register"
+            <router-link to="/listings"
               class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-md font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button">
               <span>BUSCAR</span>

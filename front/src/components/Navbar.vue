@@ -28,6 +28,11 @@
                   Soporte
                 </router-link>
               </li>
+              <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900" v-if="isLoggedIn">
+                <router-link to="/post" class="flex items-center underline hover:font-bold">
+                  Crear publicacion
+                </router-link>
+              </li>
             </ul>
           </div>
 

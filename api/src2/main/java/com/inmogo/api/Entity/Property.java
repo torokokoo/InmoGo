@@ -5,22 +5,22 @@ import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name="Property")
+@Table(name="property")
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // Nueva columna de identidad
-
+    private Long id; // Nueva columna de identidad
     private String name;
     private String address;
     private String district;
     private String description;
     private String sectorDescription;
     private ArrayList<String> images;
-    private String dimensions;
+    private int dimensions;
 
     // Constructor
-    public Property(String name, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions) {
+    public Property(String name, String address, String district, String description,
+                    String sectorDescription, ArrayList<String> images, int dimensions) {
         this.name = name;
         this.address = address;
         this.district = district;
@@ -61,5 +61,4 @@ Ni idea de como hacerlo
 
 -ConseguirImagenes(): return void
  */
-
 

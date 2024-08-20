@@ -1,6 +1,5 @@
 <template>
   <Navbar />
-  <h1>Profile</h1>
   <button @click="logout">Logout</button>
 </template>
 <script>

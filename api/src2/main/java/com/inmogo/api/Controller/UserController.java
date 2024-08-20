@@ -1,6 +1,6 @@
 package com.inmogo.api.Controller;
 
-import com.inmogo.api.Entity.UserTemplate;
+import com.inmogo.api.Entity.User;
 import com.inmogo.api.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
@@ -13,29 +13,25 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService usuarioSer;
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
     //registra usuario
     @PostMapping("/register")
-    public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
-        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
+    public User register(@RequestBody User nuevoUser){
+        return usuarioSer.register(nuevoUser.getName(), nuevoUser.getRut(), nuevoUser.getEmail(), nuevoUser.getPassword(), nuevoUser.getRole(), nuevoUser.getPermissions());
     }
-
     //logea usuario
     @PostMapping("/login")
-    public UserTemplate login(@RequestBody UserTemplate userTemplate){
-        UserTemplate res = userService.login(userTemplate.getEmail(), userTemplate.getPassword());
-        if (res != null) { return res; }
-        else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
+    public User login(@RequestBody User user){
+        User res = usuarioSer.login(user.getEmail(), user.getPassword());
+        if (res != null) { return res; } else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
-
     //consigue el id de usuario
     @GetMapping("/id")
-    public UserTemplate getUserById(@RequestParam("id") String id){
+    public User getUsuarioById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
-        return userService.getUserById(Integer.parseInt(id));
+        return usuarioSer.getUsuarioById(Integer.parseInt(id));
     }
-
 }

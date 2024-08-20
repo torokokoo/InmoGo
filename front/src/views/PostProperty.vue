@@ -10,7 +10,7 @@
       <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none inline w-1/2" v-model="squareMeters" spellcheck="false" placeholder="Metros cuadrados" type="number">
     </div>
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="image" spellcheck="false" placeholder="URL de la imagen" type="text">
-    <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe la vivienda, agrega todos los detalles que sean importantes!"></textarea>
+    <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" v-model="description" spellcheck="false" placeholder="Describe la vivienda, agrega todos los detalles que sean importantes!"></textarea>
     
     <!-- icons -->
     <div class="icons flex text-gray-500 m-2">
@@ -58,6 +58,9 @@
 </template>
 <script>
   import Navbar from '@/components/Navbar'
+  import { mapActions } from 'vuex'
+import router from '@/router'
+
   export default {
     data: () => ({
       title: '',
@@ -81,6 +84,7 @@
         Navbar
     },
     methods: {
+      ...mapActions(['listings/create']),
       async onSubmit() {
         // this.v$.$touch();
         // let valido = await this.v$.$validate();
@@ -91,9 +95,19 @@
         //       rut: this.rut,
         //       name: this.name
         //     }
+        const payload = {
+          name: this.title,
+          address: this.address,
+          district: 'Santiago',
+          description: this.description,
+          sectorDescription: '',
+          images: [this.image],
+          dimensions: this.squareMeters,
+        }
 
+        await this['listings/create'](payload)
+        router.push({ path: '/listings' })
         //     await this['register'](payload);
-        console.log(this.selectedHours.lunes)
       },
     }
   }

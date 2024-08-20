@@ -1,30 +1,22 @@
 package com.inmogo.api.Service;
 
 import com.inmogo.api.Entity.Listing;
-import com.inmogo.api.Entity.Property;
 import com.inmogo.api.Repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Service
 public class ListingService {
     @Autowired
-    private ListingRepository ListingRepository;
-    public Listing post(
-            String title,
-            String description,
-            String address,
-            String image,
-            ArrayList<String> visitingHours,
-            int price,
-            int squareMeters
-    ) {
-        Property property = new Property(title, address, "Santiago", "", "", new ArrayList<String>(), image, squareMeters);
-        Listing listing = new Listing(title, LocalDate.now(), "", 0);
+    private ListingRepository listingRepo;
 
-        return listing;
+    public Listing post(String title, String notesFromPropietary, int rankingPos) {
+        Date time = new Date();
+        Timestamp publishDate = new Timestamp(time.getTime());
+        Listing newPublish = new Listing(title, publishDate, notesFromPropietary, rankingPos);
+        return listingRepo.save(newPublish);
     }
 }

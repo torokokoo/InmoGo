@@ -3,31 +3,31 @@ package com.inmogo.api.Entity;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="Listing")
+@Table(name="listing")
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // Nueva columna de identidad
+    private Long id; // Nueva columna de identidad
 
     private String title;
-    private Timestamp publishDate;
+    private LocalDate publishDate;
     private String notesFromPropietary;
     private int rankingPos;
 
     // Constructores
-    public Listing(String title, Timestamp publishDate, String notesFromPropietary, int rankingPos){
+    public Listing(String title, LocalDate publishDate, String notesFromPropietary, int rankingPos){
         this.title = title;
         this.publishDate = publishDate;
         this.notesFromPropietary = notesFromPropietary;
         this.rankingPos = rankingPos;
     }
 
-    public Listing() {
+    public Listing(){
 
     }
-
 
     // Getters y Setters
     public Long getId(){ return this.id; }
@@ -43,5 +43,7 @@ public class Listing {
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
 
     // Métodos
-
+    public void requestForm(){
+        // contenido
+    }
 }
