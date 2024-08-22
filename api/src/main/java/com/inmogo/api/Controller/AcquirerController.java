@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/Api/Acquirer")
+@RequestMapping("/api/acquirer")
 public class AcquirerController {
     //PENDIENTE VER SI TIENE LOGICA DE SERVICIOS
 }

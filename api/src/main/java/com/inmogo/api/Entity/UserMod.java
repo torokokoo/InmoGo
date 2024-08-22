@@ -4,7 +4,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.*;
 import java.util.*;
 @Entity
-@DiscriminatorValue("UserMod")
+@DiscriminatorValue("Mod")
 
 public class UserMod extends UserTemplate {
     //Constructor

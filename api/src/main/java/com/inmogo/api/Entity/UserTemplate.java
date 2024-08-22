@@ -2,22 +2,23 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "UserTemplate")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
+@Entity //Se indica a la base de datos que es la Entidad donde se encuentran todos los atributos y genere tabla
+@Table(name = "UserTemplate") //Nombre dentro de la base de desatos
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Indica que todas las clases heradas de esta clase, en la base de datos se almacena en una sola tabla UserTemplate
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)//La comuna donde el base de datos se pueden encontrar los diversos user
 
+//Se crea la clase del Usuario planilla que servira como molde para los demas users
 public class UserTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
-    private long id;
-    private String name;
-    private String rut;
-    private String email;
-    private String password;
-    private String role;
-    private String permission;
+    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private String name; //Nombre
+    private String rut; //RUT
+    private String email; //Correo electronico
+    private String password; //Conseña
+    private String role; //Rol, TIPOS de rol 0(Admin), 1(Mod), 2(Propietario), 3(Adquiriente), este se asigna directo en la clase
+    private String permission; //Permisos
     //private ArrayList<ChatHistory> chatHistory;
 
     //Constructor

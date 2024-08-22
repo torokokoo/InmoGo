@@ -6,7 +6,7 @@ import java.util.*;
 @Entity
 @DiscriminatorValue("Acquirer")
 
-//Clase de los Adquirientes de propiedades herado desde User
+//Clase de los Adquirientes de propiedades herado desde UserTemplate
 public class Acquirer extends UserTemplate {
 
     public Acquirer(long id, String name, String rut, String email, String password, String role, String permission) {
