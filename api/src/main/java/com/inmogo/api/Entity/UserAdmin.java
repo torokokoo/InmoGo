@@ -7,35 +7,13 @@ import jakarta.persistence.*;
 
 public class UserAdmin extends UserTemplate {
     //Constructor
-    public UserAdmin(long id, String name, String rut, String email, String password, Integer role) {
-        super(id, name, rut, email, password, role);
+    public UserAdmin(long id, String name, String rut, String email, String password) {
+        super(id, name, rut, email, password, 1);
     }
 
     public UserAdmin(){
         super();
-    }
-
-    //Metodos agregados de Admin
-    public Listing Publicar(){ //Publicar
-        //TODO
-        return new Listing();
-    }
-
-    public void contactSeller(){ //ContactarVendedor
-        //TODO
-    }
-
-    public Listing manageListing(){ //GestionarPublicaciones
-        //TODO
-        return new Listing();
-    }
-
-    public void manageFormsAndRequests(){ //GestionarFormulariosYSolicitudes
-        //TODO
-    }
-
-    public void modifyForums(){ //ModificarForo
-        //TODO
+        this.setRole(1); // Establece el rol a 1 (Administrador)
     }
 
 }

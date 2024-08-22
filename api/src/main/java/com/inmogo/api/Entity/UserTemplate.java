@@ -17,8 +17,7 @@ public class UserTemplate {
     private String rut; //RUT
     private String email; //Correo electronico
     private String password; //Conseña
-    
-    private Integer role; //Rol, TIPOS de rol 0(Admin), 1(Mod), 2(Propietario), 3(Adquiriente), este se asigna directo en la clase
+    private Integer role; //Rol, TIPOS de rol 0(Visitante), 1(Administrador), 2(Mod), 3(Propietario), 4(Adquiriente) este se asigna directo en la clase
 
     //Constructor
     public UserTemplate(long id, String name, String rut, String email, String password, Integer role) {
@@ -27,8 +26,8 @@ public class UserTemplate {
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.role = role;
-        //this.chatHistory = chatHistory
+        this.role = 0; //El rol por defecto es Visitante
+
     }
 
     public UserTemplate() {

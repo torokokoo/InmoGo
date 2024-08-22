@@ -1,26 +1,19 @@
 package com.inmogo.api.Entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.*;
 @Entity
 @DiscriminatorValue("Acquirer")
 
 //Clase de los Adquirientes de propiedades herado desde UserTemplate
 public class Acquirer extends UserTemplate {
 
-    public Acquirer(long id, String name, String rut, String email, String password, Integer role) {
-        super(id, name, rut, email, password, role);
+    public Acquirer(long id, String name, String rut, String email, String password) {
+        super(id, name, rut, email, password, 4);
     }
 
     public Acquirer() {
+        super();
+        this.setRole(4); // Establece el rol a 4 (Adquiriente)
 
     }
 }
-
-/*
-PENDIENTE HACER, y ver que va en servicio:
-- ContactarVendedor(): return void
-- Pagar(): return void
-- AgendarVisita(): return void
- */

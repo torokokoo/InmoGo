@@ -6,23 +6,15 @@ import jakarta.persistence.*;
 @DiscriminatorValue("Mod")
 
 public class UserMod extends UserTemplate {
-    //Constructor
-    public UserMod(long id, String name, String rut, String email, String password, Integer role) {
-        super(id, name, rut, email, password, role);
+    // Constructor con parámetros
+    public UserMod(long id, String name, String rut, String email, String password) {
+        super(id, name, rut, email, password, 2); // Establece el rol a 1
     }
 
-    public UserMod(){
+    // Constructor por defecto
+    public UserMod() {
         super();
+        this.setRole(2); // Establece el rol a 2 (Mantenedor)
     }
 
-    //Metodos Agregados por Mod
-
-    public Listing manageListing(){ //GestionarPublicaciones
-        //TODO
-        return new Listing();
-    }
-
-    public void updateDatabase(){ //ActualizarBaseDeDatos
-        //TODO
-    }
 }
