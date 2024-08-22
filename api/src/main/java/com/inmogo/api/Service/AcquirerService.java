@@ -2,7 +2,6 @@ package com.inmogo.api.Service;
 
 import com.inmogo.api.Entity.Acquirer;
 import com.inmogo.api.Repository.AcquirerRepository;
-import com.inmogo.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
