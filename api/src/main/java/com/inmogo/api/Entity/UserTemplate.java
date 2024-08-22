@@ -17,39 +17,23 @@ public class UserTemplate {
     private String rut; //RUT
     private String email; //Correo electronico
     private String password; //Conseña
-    private String role; //Rol, TIPOS de rol 0(Admin), 1(Mod), 2(Propietario), 3(Adquiriente), este se asigna directo en la clase
-    private String permission; //Permisos
-    //private ArrayList<ChatHistory> chatHistory;
+    
+    private Integer role; //Rol, TIPOS de rol 0(Admin), 1(Mod), 2(Propietario), 3(Adquiriente), este se asigna directo en la clase
 
     //Constructor
-    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission) {
+    public UserTemplate(long id, String name, String rut, String email, String password, Integer role) {
         this.id = id;
         this.name = name;
         this.rut = rut;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.permission = permission;
         //this.chatHistory = chatHistory
     }
 
     public UserTemplate() {
 
     }
-/*
-    //Default
-    public UserTemplate() {
-        this.id = 0;
-        this.name = "Default";
-        this.rut = "123456789";
-        this.email = "example@example.com";
-        this.password = "1234";
-        this.role = "UserTemplate";
-        this.permission = "UserTemplate";
-        //this.chatHistory = new ArrayList<ChatHistory>();
-    }
-
- */
 
     //Getters
     public long getId() { return id; }
@@ -57,9 +41,7 @@ public class UserTemplate {
     public String getRut() { return rut; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
-    public String getRole() { return role; } //ConseguirRol
-    public String getPermission() { return permission; } //ConseguirPermiso
-    //public ArrayList<ChatHistory> getChatHistory() { return chatHistory; }
+    public Integer getRole() { return role; } //ConseguirRol
 
     //Setters
     public void setId(long id) { this.id = id; }
@@ -67,9 +49,7 @@ public class UserTemplate {
     public void setRut(String rut) { this.rut = rut; }
     public void setEmail(String email) { this.email = email; }
     public void setPassword(String password) { this.password = password; }
-    public void setRole(String role) { this.role = role; }
-    public void setPermission(String permission) { this.permission = permission; }
-    //public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
+    public void setRole(Integer role) { this.role = role; }
 
 
 }

@@ -1,15 +1,14 @@
 package com.inmogo.api.Entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.*;
+
 @Entity
 @DiscriminatorValue("Mod")
 
 public class UserMod extends UserTemplate {
     //Constructor
-    public UserMod(long id, String name, String rut, String email, String password, String role, String permission) {
-        super(id, name, rut, email, password, role, permission);
+    public UserMod(long id, String name, String rut, String email, String password, Integer role) {
+        super(id, name, rut, email, password, role);
     }
 
     public UserMod(){

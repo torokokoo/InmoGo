@@ -22,7 +22,7 @@ public class UserController {
     //Guardar los datos de un usuario en la base de datos
     @PostMapping("/register")
     public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
-        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
+        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole());
     }
 
     //logea usuario

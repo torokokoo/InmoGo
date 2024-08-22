@@ -9,8 +9,8 @@ import java.util.*;
 //Clase de los Adquirientes de propiedades herado desde UserTemplate
 public class Acquirer extends UserTemplate {
 
-    public Acquirer(long id, String name, String rut, String email, String password, String role, String permission) {
-        super(id, name, rut, email, password, role, permission);
+    public Acquirer(long id, String name, String rut, String email, String password, Integer role) {
+        super(id, name, rut, email, password, role);
     }
 
     public Acquirer() {
