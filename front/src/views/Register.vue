@@ -13,18 +13,24 @@
             <p class="text-sm mt-6 text-gray-800">Ingresa a una plataforma donde puedes encontrar y realizar todos los tramites necesarios para encontrar tu nuevo hogar sonado,
               todo en un solo lugar con InmoGo.
             </p>
-            <p class="text-sm mt-12 text-gray-800">Si aun no tienes una cuenta, <router-link to="/register" class="text-primary font-semibold hover:underline">registrate aqui</router-link></p>
+            <p class="text-sm mt-12 text-gray-800">Si ya tienes una cuenta, <router-link to="/login" class="text-primary font-semibold hover:underline">inicia sesion aqui</router-link></p>
           </div>
 
           <form class="max-w-md md:ml-auto w-full" @submit.prevent='onSubmit'>
             <h3 class="text-gray-800 text-primary text-3xl font-extrabold mb-8">
-              Iniciar sesion
+              Registrate
             </h3>
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-5 rounded relative" v-if="v$.$errors.length > 0" role="alert">
               <span class="block" v-for="error of v$.$errors" :key="error.$uid">- {{ error.$message }}</span>
             </div>
 
             <div class="space-y-4">
+              <div>
+                <input name="name" v-model="name" type="text" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-primary focus:bg-transparent" placeholder="Nombre" />
+              </div>
+              <div>
+                <input name="rut" v-model="rut" type="text" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-primary focus:bg-transparent" placeholder="RUT" />
+              </div>
               <div>
                 <input name="email" v-model="email" type="text" autocomplete="email" class="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-primary focus:bg-transparent" placeholder="Correo electronico" />
               </div>
@@ -76,7 +82,7 @@
 
 <script>
     import { useVuelidate } from '@vuelidate/core';
-    import { requiredEmail$, requiredPassword$, email$ } from '@/helpers/validators'
+    import { requiredEmail$, requiredPassword$, email$, requiredRut$, requiredName$ } from '@/helpers/validators'
     import { mapActions } from 'vuex';
 
     export default {
@@ -86,12 +92,14 @@
         data: () => ({
             email: '',
             password: '',
+            rut: '',
+            name: '',
             rememberMe: false,
         }),
         computed: {
         },
         methods: {
-            ...mapActions('auth', ['login']),
+            ...mapActions('auth', ['register']),
             async onSubmit() {
               this.v$.$touch();
               let valido = await this.v$.$validate();
@@ -99,9 +107,11 @@
                   const payload = {
                     email: this.email,
                     password: this.password,
+                    rut: this.rut,
+                    name: this.name
                   }
 
-                  await this['login'](payload);
+                  await this['register'](payload);
               }
             },
         },
@@ -109,6 +119,8 @@
           return {
             email: { requiredEmail$, email$ },
             password: { requiredPassword$ },
+            rut: { requiredRut$ }, 
+            name: { requiredName$ }
           }
         }
     }
