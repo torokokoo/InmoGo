@@ -26,13 +26,13 @@ public class UserTemplate {
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.role = 0; //El rol por defecto es Visitante
-
+        this.role = role != null ? role : 0; // Establece role a 0 (visitante) si no se proporciona
     }
 
     public UserTemplate() {
-
+        this.role = 0; // Establece role a 0 por defecto
     }
+
 
     //Getters
     public long getId() { return id; }
