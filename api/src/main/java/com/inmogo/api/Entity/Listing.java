@@ -6,15 +6,16 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="Listing")
+
+//Se crea la clase Publicacion se rellana al momento de querer publicar y va en conjunto a la propiedad
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Nueva columna de identidad
-
-    private String title;
-    private Timestamp publishDate;
-    private String notesFromPropietary;
-    private int rankingPos;
+    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private String title; //Titulo
+    private Timestamp publishDate; //Tiempo en el que se publico, no se debe rellenar en los campos, se calcula cuando se crea
+    private String notesFromPropietary; // Comentarios de propietario
+    private int rankingPos; //Ranking, no se debe rellenar en los campos, esto se hace automatico al momento de crear
 
     // Constructores
     public Listing(String title, Timestamp publishDate, String notesFromPropietary, int rankingPos){
@@ -24,12 +25,10 @@ public class Listing {
         this.rankingPos = rankingPos;
     }
 
-    public Listing(){
-        this.title = "Publicacion de Prueba";
-        this.publishDate = new Timestamp(System.currentTimeMillis());
-        this.notesFromPropietary = "Notas de Propietario";
-        this.rankingPos = 1;
+    public Listing() {
+
     }
+
 
     // Getters y Setters
     public Long getId(){ return this.id; }
@@ -45,7 +44,5 @@ public class Listing {
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
 
     // Métodos
-    public void requestForm(){
-        // contenido
-    }
+
 }

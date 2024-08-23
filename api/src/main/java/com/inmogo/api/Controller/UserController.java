@@ -8,19 +8,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-@RestController
-@CrossOrigin
-@RequestMapping("/api/userTemplate")
+@RestController //Es un controlador solo con datos JSON
+@CrossOrigin //Permite hacer solicitudes de manera cruzadas
+@RequestMapping("/api/user") //Direccion URL
+
+//Se crea la clase de controlador para el usuario base
 public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
-    //registra usuario
+    //Guardar los datos de un usuario en la base de datos
     @PostMapping("/register")
     public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
-        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole(), newUserTemplate.getPermission());
+        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole());
     }
 
     //logea usuario

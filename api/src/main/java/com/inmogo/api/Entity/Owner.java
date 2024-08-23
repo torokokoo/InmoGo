@@ -1,8 +1,6 @@
 package com.inmogo.api.Entity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import java.util.*;
 
 //Clase de los Propietarios de inmuebles heradado de user
 
@@ -11,44 +9,15 @@ import java.util.*;
 public class Owner extends UserTemplate {
 
 
-    public Owner(long id, String name, String rut, String email, String password, String role, String permission) {
-        super(id, name, rut, email, password, role, permission);
+    public Owner(long id, String name, String rut, String email, String password) {
+        super(id, name, rut, email, password, 3);
     }
 
     public Owner() {
+        super();
+        this.setRole(3); // Establece el rol a 3 (Propietario)
 
     }
-
-
-    /*prendiente desarrollar funcionalidades
-
-    - Publicar(): return Publicación
-    - EditarPublicaciones(): return Publicación
-    - PromocionSemanal(): return void
-    - PagarBeneficios(): return void
-    */
-    public Listing publish() {
-        // Implementar logica
-        return new Listing();
-    }
-
-    // Edit publications method
-    public Listing editPublications() {
-        // Implementar logica
-        return new Listing();
-    }
-
-    // Weekly promotion method (void return type)
-    public void weeklyPromotion() {
-        // Implementar logica
-    }
-
-    // Pay benefits method (void return type)
-
-    public void payBenefits() {
-        // Implementar logica
-    }
-
 
 
 }
