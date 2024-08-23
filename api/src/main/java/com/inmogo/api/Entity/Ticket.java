@@ -5,16 +5,16 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="Ticket")
-public class Ticket { //Boleta
+//Se crea la clase Boleta, usada en la simulacion de pago
+public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Nueva columna de identidad
-
+    private Long id; //ID es auto incremental, no se debe rellenar en los campos
     private String paymentType; //tipoDePago, puede ser Boleta o Factura
-    private int totalPaid; //totalPagado
-    private int ticketID; //numeroDeBoleta
-    private Timestamp date; //fecha
-    private String sellerRUT; //rutVendedor
+    private int totalPaid; //Total pagado
+    private int ticketID; //Numero de boleta
+    private Timestamp date; //Fecha
+    private String sellerRUT; //Rut vendedor
 
     // Constructores
     public Ticket(String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {

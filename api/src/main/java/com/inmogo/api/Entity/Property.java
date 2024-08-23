@@ -6,18 +6,19 @@ import java.util.*;
 
 @Entity
 @Table(name="Property")
+
+//Se crea la clase Propiedad donde se guardara todos los atributos que tenga un inmueble
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // Nueva columna de identidad
-
-    private String name;
-    private String address;
-    private String district;
-    private String description;
-    private String sectorDescription;
-    private ArrayList<String> images;
-    private String dimensions;
+    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private String name; //Nombre
+    private String address; //Direccion
+    private String district; //Comuna
+    private String description; //Descripccion
+    private String sectorDescription; //Descripccion del sector
+    private ArrayList<String> images; //Listado de imagenes
+    private String dimensions; //Dimensiones totales del inmueble
 
     // Constructor
     public Property(String name, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions) {
