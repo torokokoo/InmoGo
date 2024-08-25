@@ -13,10 +13,10 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepo;
 
-    public Listing post(String title, String notesFromPropietary, int rankingPos) {
+    public Listing post(String title, String notesFromPropietary, int rankingPos, int price, long propertyID) {
         Date time = new Date();
         Timestamp publishDate = new Timestamp(time.getTime());
-        Listing newPublish = new Listing(title, publishDate, notesFromPropietary, rankingPos);
+        Listing newPublish = new Listing(title, publishDate, notesFromPropietary, rankingPos, price, propertyID);
         return listingRepo.save(newPublish);
     }
 }
