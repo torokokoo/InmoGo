@@ -16,6 +16,6 @@ public class ListingController {
     @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
         System.out.printf("Creando publicacion");
-        return listingService.post(newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos(), newListing.getPrice(), newListing.getPropertyID());
+        return listingService.post(newListing.getTitle(), newListing.getRankingPos(), newListing.getPrice(), newListing.getPropertyID());
     }
 }
