@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 
 @Service
@@ -13,10 +14,11 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepo;
 
-    public Listing post(long id, String title, String notesFromPropietary, int rankingPos) {
+    public Listing post(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, int price) {
         Date time = new Date();
         Timestamp publishDate = new Timestamp(time.getTime());
-        Listing newPublish = new Listing(id, title, publishDate, notesFromPropietary, rankingPos);
+
+        Listing newPublish = new Listing(title, address, district, description, sectorDescription, images, dimensions, publishDate, 0, price);
         return listingRepo.save(newPublish);
     }
 }

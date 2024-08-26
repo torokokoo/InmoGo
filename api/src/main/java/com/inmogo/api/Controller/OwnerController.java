@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/Api/Owner")
+@RequestMapping("/api/owner")
 
 public class OwnerController {
     @Autowired

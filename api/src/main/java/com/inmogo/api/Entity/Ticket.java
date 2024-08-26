@@ -2,28 +2,22 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
-import jakarta.persistence.*;
-
-/**
- * Boletas.
- */
 
 @Entity
 @Table(name="Ticket")
-public class Ticket { //Boleta
-    //Attrib.
+//Se crea la clase Boleta, usada en la simulacion de pago
+public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id; //ID es auto incremental, no se debe rellenar en los campos
     private String paymentType; //tipoDePago, puede ser Boleta o Factura
-    private int totalPaid; //totalPagado
-    private int ticketID; //numeroDeBoleta
-    private Timestamp date; //fecha
-    private String sellerRUT; //rutVendedor
+    private int totalPaid; //Total pagado
+    private int ticketID; //Numero de boleta
+    private Timestamp date; //Fecha
+    private String sellerRUT; //Rut vendedor
 
-    //Construct
-    public Ticket(long id, String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {
-        this.id = id;
+    // Constructores
+    public Ticket(String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {
         this.paymentType = paymentType;
         this.totalPaid = totalPaid;
         this.ticketID = ticketID;
@@ -31,25 +25,31 @@ public class Ticket { //Boleta
         this.sellerRUT = sellerRUT;
     }
 
-    public Ticket(){ }
+    public Ticket(){
+        this.paymentType = "Boleta";
+        this.totalPaid = 0;
+        this.ticketID = 1;
+        this.date = new Timestamp(System.currentTimeMillis());
+        this.sellerRUT = "12345678-9";
+    }
 
-    //Getter
-    public long getId() { return id; }
+    // Getters
+    public Long getId() { return id; }
     public String getPaymentType() { return paymentType; }
     public int getTotalPaid() { return totalPaid; }
     public int getTicketID() { return ticketID; }
     public Timestamp getDate() { return date; }
     public String getSellerRUT() { return sellerRUT; }
 
-    //Setter
-    public void setId(long id) {this.id = id;}
+    // Setters
+    public void setId(Long id) { this.id = id; }
     public void setPaymentType(String paymentType) { this.paymentType = paymentType; }
     public void setTotalPaid(int totalPaid) { this.totalPaid = totalPaid; }
     public void setTicketID(int ticketID) { this.ticketID = ticketID; }
     public void setDate(Timestamp date) { this.date = date; }
     public void setSellerRUT(String sellerRUT) { this.sellerRUT = sellerRUT; }
 
-    //Other
+    // Otros métodos
     public void printTicket(){ //imprimirBoleta
         //TODO
     }
@@ -57,9 +57,9 @@ public class Ticket { //Boleta
     public void webPay(){ //pagoWeb
         //TODO
         /*
-        * Se tiene en mente implementar un menu que posea dos opciones que indiquen si se realizo el pago:
-        *   1. Se realizo el pago
-        *   2. No se realizo el pago
-        */
+         * Se tiene en mente implementar un menu que posea dos opciones que indiquen si se realizo el pago:
+         *   1. Se realizo el pago
+         *   2. No se realizo el pago
+         */
     }
 }

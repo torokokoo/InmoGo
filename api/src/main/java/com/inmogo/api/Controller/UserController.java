@@ -8,23 +8,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-@RestController
-@CrossOrigin
-@RequestMapping("/api/userTemplate")
+@RestController //Es un controlador solo con datos JSON
+@CrossOrigin //Permite hacer solicitudes de manera cruzadas
+@RequestMapping("/api/user") //Direccion URL
 
+//Se crea la clase de controlador para el usuario base
 public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
     private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
-    //Registra al Usuario
+    //Guardar los datos de un usuario en la base de datos
     @PostMapping("/register")
     public UserTemplate register(@RequestBody UserTemplate newUserTemplate){
-        return userService.register(newUserTemplate);
+        return userService.register(newUserTemplate.getId(), newUserTemplate.getName(), newUserTemplate.getRut(), newUserTemplate.getEmail(), newUserTemplate.getPassword(), newUserTemplate.getRole());
     }
 
-    //Logea al Usuario
+    //logea usuario
     @PostMapping("/login")
     public UserTemplate login(@RequestBody UserTemplate userTemplate){
         UserTemplate res = userService.login(userTemplate.getEmail(), userTemplate.getPassword());
@@ -32,11 +33,11 @@ public class UserController {
         else { throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Cause description here");}
     }
 
-    //Retorna al Usuario por su ID.
+    //consigue el id de usuario
     @GetMapping("/id")
     public UserTemplate getUserById(@RequestParam("id") String id){
         System.out.printf("id por buscar" + id);
-        return userService.findUserById(Long.parseLong(id));
+        return userService.getUserById(Integer.parseInt(id));
     }
 
 }

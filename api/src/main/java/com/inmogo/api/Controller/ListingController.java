@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/Api/Listing")
+@RequestMapping("/api/listing")
 
 public class ListingController {
+
     @Autowired
     private ListingService listingService;
     @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
-        System.out.println("Creando publicacion");
-        return listingService.post(newListing.getId(), newListing.getTitle(), newListing.getNotesFromPropietary(), newListing.getRankingPos());
+        System.out.printf("Creando publicacion");
+        return listingService.post(newListing.getTitle(), newListing.getAddress(), newListing.getDistrict(), newListing.getDescription(), newListing.getSectorDescription(), newListing.getImages(), newListing.getDimensions(), newListing.getPrice());
     }
 }
