@@ -24,6 +24,7 @@ public class Listing {
     private Timestamp publishDate; //Tiempo en el que se publico, no se debe rellenar en los campos, se calcula cuando se crea
     private int rankingPos; //Ranking, no se debe rellenar en los campos, esto se hace automatico al momento de crear
     private int price; //Precio del inmueble
+    private boolean verified; //Revisa si la publicacion fue verificada por un administrador.
 
     // Constructores
     public Listing(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, Timestamp publishDate, int rankingPos, int price) {
@@ -37,6 +38,8 @@ public class Listing {
         this.publishDate = publishDate;
         this.rankingPos = rankingPos;
         this.price = price;
+        this.verified = false;
+
     }
 
     public Listing() {
@@ -74,7 +77,7 @@ public class Listing {
     public Timestamp getPublishDate(){ return this.publishDate; }
     public int getRankingPos(){ return this.rankingPos; }
     public int getPrice() { return price;}
-
+    public boolean getVerified() {return verified;}
 
     //Setters
 
@@ -109,4 +112,7 @@ public class Listing {
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
     public void setPrice(int price) { this.price = price;}
 
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
 }
