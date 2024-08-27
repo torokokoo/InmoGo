@@ -1,50 +1,38 @@
 package com.inmogo.api.Entity;
 
-import com.inmogo.api.Controller.Person;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+@Entity //Se indica a la base de datos que es la Entidad donde se encuentran todos los atributos y genere tabla
+@Table(name = "UserTemplate") //Nombre dentro de la base de desatos
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Indica que todas las clases heradas de esta clase, en la base de datos se almacena en una sola tabla UserTemplate
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)//La comuna donde el base de datos se pueden encontrar los diversos user
 
-@Entity
-@Table(name = "UserTemplate")
-
-public class UserTemplate implements Person {
+//Se crea la clase del Usuario planilla que servira como molde para los demas users
+public class UserTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Attributes
-    private long id;
-    private String name;
-    private String rut;
-    private String email;
-    private String password;
-    private String role;
-    private String permission;
-    private ArrayList<ChatHistory> chatHistory;
+    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private String name; //Nombre
+    private String rut; //RUT
+    private String email; //Correo electronico
+    private String password; //Conseña
+    private Integer role; //Rol, TIPOS de rol 0(Visitante), 1(Administrador), 2(Mod), 3(Propietario), 4(Adquiriente) este se asigna directo en la clase
 
     //Constructor
-    public UserTemplate(long id, String name, String rut, String email, String password, String role, String permission, ArrayList<ChatHistory> chatHistorys) {
+    public UserTemplate(long id, String name, String rut, String email, String password, Integer role) {
         this.id = id;
         this.name = name;
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.role = role;
-        this.permission = permission;
-        this.chatHistory = chatHistorys;
+        this.role = role != null ? role : 0; // Establece role a 0 (visitante) si no se proporciona
     }
 
-    //Default
     public UserTemplate() {
-        this.id = 0;
-        this.name = "Default";
-        this.rut = "123456789";
-        this.email = "example@example.com";
-        this.password = "1234";
-        this.role = "UserTemplate";
-        this.permission = "UserTemplate";
-        this.chatHistory = new ArrayList<ChatHistory>();
+        this.role = 0; // Establece role a 0 por defecto
     }
+
 
     //Getters
     public long getId() { return id; }
@@ -52,9 +40,7 @@ public class UserTemplate implements Person {
     public String getRut() { return rut; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
-    public String getRole() { return role; } //ConseguirRol
-    public String getPermission() { return permission; } //ConseguirPermiso
-    public ArrayList<ChatHistory> getChatHistory() { return chatHistory; }
+    public Integer getRole() { return role; } //ConseguirRol
 
     //Setters
     public void setId(long id) { this.id = id; }
@@ -62,25 +48,7 @@ public class UserTemplate implements Person {
     public void setRut(String rut) { this.rut = rut; }
     public void setEmail(String email) { this.email = email; }
     public void setPassword(String password) { this.password = password; }
-    public void setRole(String role) { this.role = role; }
-    public void setPermission(String permission) { this.permission = permission; }
-    public void setChatHistory(ArrayList<ChatHistory> chatHistory) { this.chatHistory = chatHistory; }
+    public void setRole(Integer role) { this.role = role; }
 
-    //Other Methods
-    public void enterChatMode(){ //IngresarChatDeMensajeria
-        //TODO
-    }
-
-    public void displayHistory(){ //MostrarHistorial
-        //TODO
-    }
-
-    @Override
-    public void getForum() {
-        System.out.println("Ingrese sus dudas al foro");
-        Scanner scan = new Scanner(System.in);
-        String something = scan.next();
-        System.out.println(getName() + ": " + something + "\n");
-    }
 
 }

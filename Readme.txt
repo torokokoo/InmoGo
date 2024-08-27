@@ -1,3 +1,1 @@
 Agregue al usuario como clase con todo lo que implica.
-
-solo para joaco
