@@ -1,6 +1,8 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
+
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -27,9 +29,12 @@ public class Listing {
     private ArrayList<ArrayList<Boolean>> reservations; //7*12 = 84,
     //Son las reservaciones disponibles de la publicacion
     //7 por los dias de la semana, 12 por las 12 horas del dia laboral
+    private boolean house; // atributo que si es true es una casa y false es un departamento
+    private boolean sale; // atributo que si es true es una compra y false es un arriendo
+    private Timestamp expired; //atributo que indica la fecha de expiracion de la publicacion
 
     // Constructores
-    public Listing(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, Timestamp publishDate, int rankingPos, int price, ArrayList<ArrayList<Boolean>> reservations) {
+    public Listing(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, Timestamp publishDate, int rankingPos, int price, ArrayList<ArrayList<Boolean>> reservations, boolean house, boolean sale, Timestamp expired) {
         this.title = title;
         this.address = address;
         this.district = district;
@@ -42,6 +47,9 @@ public class Listing {
         this.price = price;
         this.verified = false;
         this.reservations = reservations;
+        this.house = house;
+        this.sale = sale;
+        this.expired = expired;
     }
 
     public Listing() {}
@@ -60,6 +68,9 @@ public class Listing {
     public int getPrice() { return price;}
     public boolean getVerified() {return verified;}
     public ArrayList<ArrayList<Boolean>> getReservations() {return reservations;}
+    public boolean getHouse() {return house;}
+    public boolean getSale() {return sale;}
+    public Timestamp getExpired() {return expired;}
 
     //Setters
     public void setId(Long id){ this.id = id; }
@@ -75,4 +86,7 @@ public class Listing {
     public void setPrice(int price) { this.price = price;}
     public void setVerified(boolean verified) { this.verified = verified; }
     public void setReservations(ArrayList<ArrayList<Boolean>> reservations) { this.reservations = reservations; }
+    public void setHouse(boolean house) {this.house = house;}
+    public void setSale(boolean sale) {this.sale = sale;}
+    public void setExpired(Timestamp expired) {this.expired = expired;}
 }
