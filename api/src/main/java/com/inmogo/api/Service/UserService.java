@@ -13,7 +13,7 @@ public class UserService {
     //Register
     public UserTemplate register(long id, String name, String rut, String email, String password, Integer role){
         UserTemplate userTemplate = new UserTemplate(id, name, rut, email, password, 3);
-        UserTemplate exists = userRepo.findByEmail(userTemplate.getEmail());
+        UserTemplate exists = userRepo.findUserByEmail(userTemplate.getEmail());
         System.out.println("Register");
         if (exists != null){
             return null;
@@ -23,7 +23,7 @@ public class UserService {
 
     //Login
     public UserTemplate login(String email, String password){
-        UserTemplate userTemplate = userRepo.findByEmail(email);
+        UserTemplate userTemplate = userRepo.findUserByEmail(email);
         System.out.println("Login");
         if (userTemplate != null){
             if (password.equals(userTemplate.getPassword())){
@@ -35,7 +35,7 @@ public class UserService {
 
     //Busqueda por ID
     public UserTemplate getUserById(long Id){
-        return userRepo.findById(Id).orElse(null);
+        return userRepo.findUserById(Id);
     }
 
 }

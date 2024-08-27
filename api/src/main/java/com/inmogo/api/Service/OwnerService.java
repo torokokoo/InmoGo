@@ -1,11 +1,8 @@
 package com.inmogo.api.Service;
 
-import com.inmogo.api.Entity.Listing;
 import com.inmogo.api.Repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Date;
-import java.sql.Timestamp;
 
 
 @Service
