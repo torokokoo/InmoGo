@@ -14,11 +14,11 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepo;
 
-    public Listing post(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, int price, ArrayList<ArrayList<Boolean>> reservations) {
+    public Listing post(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, int price, ArrayList<ArrayList<Boolean>> reservations, boolean house, boolean sale) {
         Date time = new Date();
         Timestamp publishDate = new Timestamp(time.getTime());
 
-        Listing newPublish = new Listing(title, address, district, description, sectorDescription, images, dimensions, publishDate, 0, price, reservations);
+        Listing newPublish = new Listing(title, address, district, description, sectorDescription, images, dimensions, publishDate, 0, price, reservations, house, sale);
         return listingRepo.save(newPublish);
     }
 }
