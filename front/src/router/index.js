@@ -6,6 +6,7 @@ import Profile from '@/views/Profile'
 import Register from '@/views/Register'
 import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
+import Owner from '@/views/Owner.vue'
 
 const routes = [
   { 
@@ -43,6 +44,11 @@ const routes = [
     name: 'Listings',
     path: '/listings',
     component: Listings,
+  },
+  {
+    name: 'Owner',
+    path: '/owner',
+    component: Owner,
   }
 ];
 
