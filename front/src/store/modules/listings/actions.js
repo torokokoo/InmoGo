@@ -12,6 +12,7 @@ export default {
         return data;
     },
     async create({ commit }, payload) {
+        console.log(payload)
         const { data } = await axios.post(api + 'api/listing/create', payload);
         return data;
     },

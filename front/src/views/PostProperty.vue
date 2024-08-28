@@ -10,6 +10,13 @@
       <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none inline w-1/2" v-model="price" spellcheck="false" placeholder="Precio (en CLP)" type="number">
       <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none inline w-1/2" v-model="squareMeters" spellcheck="false" placeholder="Metros cuadrados" type="number">
     </div>
+    <div class="flex text-gray-800 items-center ps-4 mb-4 border border-gray-300 rounded bg-gray-100 outline-none">
+      <input id="" type="checkbox" value="true" v-model="house" @click="() => apartment = !apartment" name="bordered-checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-500">Casa</label>
+
+        <input id="" type="checkbox" v-model="apartment" @click="() => house = !house" value="true" name="bordered-checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-500">Departamento</label>
+    </div>
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="image" spellcheck="false" placeholder="URL de la imagen" type="text">
     <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" v-model="description" spellcheck="false" placeholder="Describe la vivienda, agrega todos los detalles que sean importantes!"></textarea>
     <textarea class="description bg-gray-100 sec p-3 mt-5 h-40 border border-gray-300 outline-none" v-model="sectorDescription" spellcheck="false" placeholder="Describe tu barrio, los alrededores, que pueden encontrar"></textarea>
@@ -66,6 +73,8 @@ import router from '@/router'
   export default {
     data: () => ({
       title: '',
+      house: true,
+      apartment: false,
       address: '',
       price: '',
       squareMeters: '',
@@ -101,6 +110,8 @@ import router from '@/router'
         //       name: this.name
         //     }
         const payload = {
+          sale: false,
+          house: this.house,
           title: this.title,
           address: this.address,
           district: this.district,
@@ -108,6 +119,8 @@ import router from '@/router'
           sectorDescription: this.sectorDescription,
           images: [this.image],
           dimensions: parseInt(this.squareMeters),
+          reservations: [this.selectedHours.lunes, this.selectedHours.martes, this.selectedHours.miercoles, this.selectedHours.jueves, this.selectedHours.viernes, this.selectedHours.sabado, this.selectedHours.domingo],
+          price: this.price,
         }
 
         await this['listings/create'](payload)
