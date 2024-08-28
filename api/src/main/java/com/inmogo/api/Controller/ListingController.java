@@ -18,8 +18,8 @@ public class ListingController {
     private ListingService listingService;
     @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
-        System.out.printf("Creando publicacion");
-        return listingService.post(newListing.getTitle(), newListing.getAddress(), newListing.getDistrict(), newListing.getDescription(), newListing.getSectorDescription(), newListing.getImages(), newListing.getDimensions(), newListing.getPrice());
+        System.out.println("Creando publicacion");
+        return listingService.post(newListing.getSale(), newListing.getHouse(), newListing.getTitle(), newListing.getImages(), newListing.getDescription(), newListing.getDimensions(), newListing.getAddress(), newListing.getDistrict(), newListing.getSectorDescription(), newListing.getPrice(), newListing.getReservations());
     }
 
     @GetMapping("/all")

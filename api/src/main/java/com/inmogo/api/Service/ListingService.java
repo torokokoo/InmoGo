@@ -16,11 +16,12 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepo;
 
-    public Listing post(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, int price) {
+    public Listing post(boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations) {
         Date time = new Date();
-        Timestamp publishDate = new Timestamp(time.getTime());
+        Timestamp publishDate = new Timestamp(time.getTime()); //Se crea la fecha de publicacion
+        Timestamp expired = new Timestamp(System.currentTimeMillis() + 30L * 24 * 60 * 60 * 1000); //Se crea la fecha de expiracion
 
-        Listing newPublish = new Listing(title, address, district, description, sectorDescription, images, dimensions, publishDate, 0, price);
+        Listing newPublish = new Listing(0, publishDate, expired, sale, house, title, images, description, dimensions, address, district, sectorDescription, price, reservations);
         return listingRepo.save(newPublish);
     }
 
