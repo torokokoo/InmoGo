@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ListingService {
@@ -20,5 +22,13 @@ public class ListingService {
 
         Listing newPublish = new Listing(title, address, district, description, sectorDescription, images, dimensions, publishDate, 0, price);
         return listingRepo.save(newPublish);
+    }
+
+    public List<Listing> getAll() {
+        return listingRepo.findAll();
+    }
+
+    public Optional<Listing> getById(long id) {
+        return listingRepo.findById(id);
     }
 }

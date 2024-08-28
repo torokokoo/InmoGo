@@ -5,13 +5,15 @@
   <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="title" spellcheck="false" placeholder="Titulo" type="text">
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="address" spellcheck="false" placeholder="Direccion" type="text">
+    <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="district" spellcheck="false" placeholder="Barrio" type="text">
     <div class="flex">
       <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none inline w-1/2" v-model="price" spellcheck="false" placeholder="Precio (en CLP)" type="number">
       <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none inline w-1/2" v-model="squareMeters" spellcheck="false" placeholder="Metros cuadrados" type="number">
     </div>
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="image" spellcheck="false" placeholder="URL de la imagen" type="text">
     <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" v-model="description" spellcheck="false" placeholder="Describe la vivienda, agrega todos los detalles que sean importantes!"></textarea>
-    
+    <textarea class="description bg-gray-100 sec p-3 mt-5 h-40 border border-gray-300 outline-none" v-model="sectorDescription" spellcheck="false" placeholder="Describe tu barrio, los alrededores, que pueden encontrar"></textarea>
+
     <!-- icons -->
     <div class="icons flex text-gray-500 m-2">
       <svg class="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -68,6 +70,9 @@ import router from '@/router'
       price: '',
       squareMeters: '',
       image: '',
+      sectorDescription: '',
+      description: '',
+      district: '',
       selectedHours: {
         lunes: [false, false, false, false, false, false, false, false, false, false, false, false],
         martes: [false, false, false, false, false, false, false, false, false, false, false, false],
@@ -96,13 +101,13 @@ import router from '@/router'
         //       name: this.name
         //     }
         const payload = {
-          name: this.title,
+          title: this.title,
           address: this.address,
-          district: 'Santiago',
+          district: this.district,
           description: this.description,
-          sectorDescription: '',
+          sectorDescription: this.sectorDescription,
           images: [this.image],
-          dimensions: this.squareMeters,
+          dimensions: parseInt(this.squareMeters),
         }
 
         await this['listings/create'](payload)
