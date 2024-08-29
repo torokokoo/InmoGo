@@ -11,16 +11,8 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appRepo;
 
-    public Appointment appoint(long ownerId, long acquirerId, long listingId, int dayOfAppointment, int timeOfAppointment){
-        Appointment newAppoint = new Appointment(ownerId, acquirerId, listingId, dayOfAppointment, timeOfAppointment);
-        //Revisar si un Listing ya tiene un bloque reservado o no.
-        //Retorna nulo si ya esta reservado
-        //Agenda un nuevo agendado al caso contrario
-        Appointment exists = appRepo.findByListingIdAndDayOfAppointmentAndTimeOfAppointment(listingId, dayOfAppointment,timeOfAppointment);
-        System.out.println("Agendar:");
-        if (exists != null){
-            return null;
-        }
+    public Appointment appoint(int dayOfAppointment, int timeOfAppointment){
+        Appointment newAppoint = new Appointment(dayOfAppointment, timeOfAppointment);
         return appRepo.save(newAppoint);
     }
 }

@@ -17,6 +17,6 @@ public class AppointmentController {
 
     @PostMapping("/create")
     public Appointment appoint(@RequestBody Appointment newAppointment){
-        return appointmentService.appoint(newAppointment.getOwnerId(), newAppointment.getAcquirerId(), newAppointment.getListingId(), newAppointment.getDayOfAppointment(), newAppointment.getTimeOfAppointment());
+        return appointmentService.appoint(newAppointment.getDayOfAppointment(), newAppointment.getTimeOfAppointment());
     }
 }
