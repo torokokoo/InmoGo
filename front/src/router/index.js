@@ -6,7 +6,7 @@ import Profile from '@/views/Profile'
 import Register from '@/views/Register'
 import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
-import Owner from '@/views/Owner.vue'
+import Listing from '@/views/Listing'
 
 const routes = [
   { 
@@ -46,15 +46,10 @@ const routes = [
     component: Listings,
   },
   {
-    name: 'Owner',
-    path: '/owner',
-    component: Owner,
-  },
-  {
-    name: 'Admin',
-    path: '/admin',
-    component: Admin,
-  },
+    name: 'Listing',
+    path: '/listings/:id',
+    component: Listing,
+  }
 ];
 
 const router = createRouter({
