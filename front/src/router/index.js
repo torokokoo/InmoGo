@@ -6,6 +6,7 @@ import Profile from '@/views/Profile'
 import Register from '@/views/Register'
 import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
+import Listing from '@/views/Listing'
 
 const routes = [
   { 
@@ -43,6 +44,11 @@ const routes = [
     name: 'Listings',
     path: '/listings',
     component: Listings,
+  },
+  {
+    name: 'Listing',
+    path: '/listings/:id',
+    component: Listing,
   }
 ];
 
