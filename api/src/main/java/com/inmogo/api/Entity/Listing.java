@@ -25,6 +25,8 @@ public class Listing {
     private int rankingPos; //Ranking, no se debe rellenar en los campos, esto se hace automatico al momento de crear
     private int price; //Precio del inmueble
 
+
+
     // Constructores
     public Listing(String title, String address, String district, String description, String sectorDescription, ArrayList<String> images, String dimensions, Timestamp publishDate, int rankingPos, int price) {
         this.title = title;
