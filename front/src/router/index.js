@@ -49,7 +49,12 @@ const routes = [
     name: 'Owner',
     path: '/owner',
     component: Owner,
-  }
+  },
+  {
+    name: 'Admin',
+    path: '/admin',
+    component: Admin,
+  },
 ];
 
 const router = createRouter({

@@ -1,4 +1,6 @@
 <template>
+    <Navbar />
+    
     <div>
         <h2>Propiedades</h2>
         <br>
@@ -11,10 +13,12 @@
 </template>
 
 <script>
+    import Navbar from '@/components/Navbar';
     import { mapActions } from 'vuex';
+
     export default{
         data: ()=>({
-            listings: ["Casa en la Playa", "Edificio Centrico", "Casa arrendada"],
+            listings: [],
             selectedHours: {
                 lunes: [],
                 martes: [],
@@ -24,6 +28,10 @@
                 sabado: [],
                 domingo: []},
         }),
+        components:{
+            Navbar,
+        },
+        
         
     }
 </script>
