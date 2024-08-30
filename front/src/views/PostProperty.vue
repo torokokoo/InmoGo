@@ -17,6 +17,13 @@
         <input id="" type="checkbox" v-model="apartment" @click="() => house = !house" value="true" name="bordered-checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-500">Departamento</label>
     </div>
+    <div class="flex text-gray-800 items-center ps-4 mb-4 border border-gray-300 rounded bg-gray-100 outline-none">
+      <input id="" type="checkbox" value="true" v-model="sale" @click="() => arriendo = !arriendo" name="bordered-checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-500">Venta</label>
+
+        <input id="" type="checkbox" v-model="arriendo" @click="() => sale = !sale" value="true" name="bordered-checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-500">Arriendo</label>
+    </div>
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" v-model="image" spellcheck="false" placeholder="URL de la imagen" type="text">
     <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" v-model="description" spellcheck="false" placeholder="Describe la vivienda, agrega todos los detalles que sean importantes!"></textarea>
     <textarea class="description bg-gray-100 sec p-3 mt-5 h-40 border border-gray-300 outline-none" v-model="sectorDescription" spellcheck="false" placeholder="Describe tu barrio, los alrededores, que pueden encontrar"></textarea>
@@ -74,6 +81,7 @@ import router from '@/router'
     data: () => ({
       title: '',
       house: true,
+      sale: true,
       apartment: false,
       address: '',
       price: '',
@@ -100,17 +108,8 @@ import router from '@/router'
     methods: {
       ...mapActions(['listings/create']),
       async onSubmit() {
-        // this.v$.$touch();
-        // let valido = await this.v$.$validate();
-        // if (valido) {
-        //     const payload = {
-        //       email: this.email,
-        //       password: this.password,
-        //       rut: this.rut,
-        //       name: this.name
-        //     }
         const payload = {
-          sale: false,
+          sale: this.sale,
           house: this.house,
           title: this.title,
           address: this.address,
@@ -125,7 +124,6 @@ import router from '@/router'
 
         await this['listings/create'](payload)
         router.push({ path: '/listings' })
-        //     await this['register'](payload);
       },
     }
   }
