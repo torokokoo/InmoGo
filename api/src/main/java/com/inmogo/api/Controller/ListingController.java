@@ -41,7 +41,7 @@ public class ListingController {
         return listingService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     public Optional<Listing> getById(@PathVariable long id) {
         System.out.printf("Buscando propiedad por id");
         return listingService.getById(id);

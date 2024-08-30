@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.*;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
-    @Autowired
-    private DataSourceTransactionManagerAutoConfiguration dataSourceTransactionManagerAutoConfiguration;
 
     @PostMapping("/create")
-    public Appointment appoint(@RequestBody Appointment newAppointment){
-        return appointmentService.appoint(newAppointment.getDayOfAppointment(), newAppointment.getTimeOfAppointment());
+    public Appointment appoint(@RequestBody AppointmentRequest appointmentRequest) {
+        return appointmentService.appoint(
+                appointmentRequest.getOwnerId(),
+                appointmentRequest.getAcquirerId(),
+                appointmentRequest.getListingId(),
+                appointmentRequest.getDayOfAppointment(),
+                appointmentRequest.getTimeOfAppointment()
+        );
     }
 }
+
