@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @DiscriminatorValue("Owner")
 public class Owner extends UserTemplate {
-
+    
 
     public Owner(long id, String name, String rut, String email, String password) {
         super(id, name, rut, email, password, 4);
