@@ -29,9 +29,8 @@ public class UserTemplate {
         this.role = role != null ? role : 0; // Establece role a 0 (visitante) si no se proporciona
     }
 
-    public UserTemplate() {
-        this.role = 0; // Establece role a 0 por defecto
-    }
+    // Establece role a 0 por defecto
+    public UserTemplate() { this.role = 0; }
 
 
     //Getters
