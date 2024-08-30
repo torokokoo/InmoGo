@@ -13,7 +13,7 @@ public class Listing {
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
-    private Owner ownerID; // Relación con la clase Owner, llave foranea
+    private UserTemplate ownerID; // Relación con la clase Owner, llave foranea
 
     private boolean verified; // Revisa si la publicacion fue verificada por un administrador
     private int rankingPos; // Ranking
@@ -56,7 +56,7 @@ public class Listing {
 
     // Getters y Setters
     public Long getId(){ return this.id; }
-    public Owner getOwnerID() {return ownerID;}
+    public UserTemplate getOwnerID() {return ownerID;}
     public boolean getVerified() {return verified;}
     public int getRankingPos(){ return this.rankingPos; }
     public Timestamp getPublishDate(){ return this.publishDate; }
@@ -76,7 +76,7 @@ public class Listing {
     //Setters
     public void setId(Long id){ this.id = id; }
 
-    public void setOwnerID(Owner owner) {this.ownerID = owner;}//establecer la llave foranea de owner
+    public void setOwnerID(UserTemplate owner) {this.ownerID = owner;}//establecer la llave foranea de owner
 
     public void setVerified(boolean verified) { this.verified = verified; }
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
