@@ -109,6 +109,7 @@ import router from '@/router'
       ...mapActions(['listings/create']),
       async onSubmit() {
         const payload = {
+          ownerId: JSON.parse(localStorage.getItem('user')).id,
           sale: this.sale,
           house: this.house,
           title: this.title,

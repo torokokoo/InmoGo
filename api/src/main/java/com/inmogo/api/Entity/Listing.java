@@ -32,9 +32,10 @@ public class Listing {
     private ArrayList<ArrayList<Boolean>> reservations; //7*12 = 84,
     //Son las reservaciones disponibles de la publicacion
     //7 por los dias de la semana, 12 por las 12 horas del dia laboral
+    private long ownerId;
 
     // Constructores
-    public Listing(int rankingPos, Timestamp publishDate, Timestamp expired, boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations) {
+    public Listing(int rankingPos, Timestamp publishDate, Timestamp expired, boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations, long ownerId) {
         this.verified = false; // Inicializar como false
         this.rankingPos = rankingPos;
         this.publishDate = publishDate;
@@ -50,6 +51,7 @@ public class Listing {
         this.sectorDescription = sectorDescription;
         this.price = price;
         this.reservations = reservations;
+        this.ownerId = ownerId;
     }
 
     public Listing() {
@@ -73,6 +75,7 @@ public class Listing {
     public String getDimensions() {return dimensions;}
     public int getPrice() { return price;}
     public ArrayList<ArrayList<Boolean>> getReservations() {return reservations;}
+    public long getOwnerId() { return ownerId; };
 
     //Setters
     public void setId(Long id){ this.id = id; }
@@ -91,4 +94,5 @@ public class Listing {
     public void setDimensions(String dimensions) { this.dimensions = dimensions; }
     public void setPrice(int price) { this.price = price;}
     public void setReservations(ArrayList<ArrayList<Boolean>> reservations) { this.reservations = reservations; }
+    public void setOwnerId(long ownerId) { this.ownerId = ownerId; }
 }

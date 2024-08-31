@@ -19,7 +19,7 @@ public class ListingController {
     @PostMapping("/create")
     public Listing post(@RequestBody Listing newListing) {
         System.out.println("Creando publicacion");
-        return listingService.post(newListing.getSale(), newListing.getHouse(), newListing.getTitle(), newListing.getImages(), newListing.getDescription(), newListing.getDimensions(), newListing.getAddress(), newListing.getDistrict(), newListing.getSectorDescription(), newListing.getPrice(), newListing.getReservations());
+        return listingService.post(newListing.getSale(), newListing.getHouse(), newListing.getTitle(), newListing.getImages(), newListing.getDescription(), newListing.getDimensions(), newListing.getAddress(), newListing.getDistrict(), newListing.getSectorDescription(), newListing.getPrice(), newListing.getReservations(), newListing.getOwnerId());
     }
 
     @GetMapping("/all")
