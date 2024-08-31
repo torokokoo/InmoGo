@@ -17,6 +17,10 @@ public class AcquirerController {
 
     @PostMapping("/register")
     public Acquirer register(@RequestBody Acquirer newAcquirer){
-        return acquirerService.register(newAcquirer.getId(), newAcquirer.getName(), newAcquirer.getRut(), newAcquirer.getEmail(), newAcquirer.getPassword());
+        return acquirerService.register(newAcquirer.getId(),
+                                        newAcquirer.getName(),
+                                        newAcquirer.getRut(),
+                                        newAcquirer.getEmail(),
+                                        newAcquirer.getPassword());
     }
 }
