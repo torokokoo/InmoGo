@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
     Appointment findByListingId(long listingId);
-    Appointment findByListingIdAndDayOfAppointmentAndTimeOfAppointment(long listingId, int dayOfAppointment, int timeOfAppointment);
+    Appointment findByListingIdAndUnixDate(long listingId, long unixDate);
 }

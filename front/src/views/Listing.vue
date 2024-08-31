@@ -42,7 +42,7 @@
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
               v-if="hour"
-              @click="schedule('lunes', i)">
+              @click="schedule(1, i)">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
             <button
@@ -63,7 +63,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('martes', i)"
+              @click="schedule(2, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -84,7 +84,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('miercoles', i)"
+              @click="schedule(3, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -104,7 +104,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('jueves', i)"
+              @click="schedule(4, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -124,7 +124,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('viernes', i)"
+              @click="schedule(5, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -144,7 +144,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('sabado', i)"
+              @click="schedule(6, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -164,7 +164,7 @@
             <button
               class="hidden align-center select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
               type="button"
-              @click="schedule('domingo', i)"
+              @click="schedule(7, i)"
               v-if="hour">
               <span>{{ 9 + i + ":00" }}</span>
             </button>
@@ -185,9 +185,13 @@
 <script>
 import { mapActions } from 'vuex'; 
 import Navbar from '@/components/Navbar'
+import { DateTime } from 'luxon';
+import router from '@/router';
+
 export default {
     data: () => ({
-      listing: {},
+      listing: { reservations: [] },
+      unixDate: 0,
     }),
     components: {
       Navbar,
@@ -196,13 +200,34 @@ export default {
       this.getListing();
     },
     methods: {
-      ...mapActions(['listings/getById']),
+      ...mapActions(['listings/getById', 'listings/createAppointment']),
       async getListing() {
         const res = await this['listings/getById'](this.$route.params.id)
         this.listing = res;
       },
-      schedule: (dia, id) => {
-        console.log(dia, 9 + id + ':00')
+      async createAppointment() {
+      },
+      schedule: async function (dia, i) {
+        const now = DateTime.now(); // Fecha actual
+        const sum = (now.toFormat('E') + dia) % 7 // Calcula cuantos dias faltan para la fecha solicitada
+        const req = now.plus({ days: sum })
+          .set({ // Funcion para setear la hora
+            hour: 9 + i, // Ya que las horas comienzan desde las 9, se puede sumar el indice para tener la hora final
+            minutes: 0, // Cierra a la hora exacta
+        });
+
+        const payload = {
+          ownerId: 1,
+          acquirerId: JSON.parse(localStorage.getItem('user')).id,
+          listingId: this.$route.params.id,
+          unixDate: req.toMillis(),
+          dia,
+          i,
+        }
+
+        const res = await this['listings/createAppointment'](payload)
+        alert(`Has agendado para el dia ${req.toFormat('ff')}`);
+        router.push('/')
       }
     }
 }
