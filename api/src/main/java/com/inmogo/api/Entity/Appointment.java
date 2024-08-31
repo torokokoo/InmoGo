@@ -2,16 +2,13 @@ package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name="Appointment")
-
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long ownerId;
-    private long acquirerId;
-    private long listingId;
 
     //Estos dos valores son coordenadas de la matriz de Agendas.
     private long unixDate;

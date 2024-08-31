@@ -1,19 +1,19 @@
 package com.inmogo.api.Entity;
 
 import jakarta.persistence.*;
-
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Entity
 @Table(name="Listing")
-
-//Se crea la clase Publicacion se rellana al momento de querer publicar y va en conjunto a la propiedad
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private long id; // ID es auto incremental, no se debe rellenar en los campos
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private UserTemplate ownerID; // Relación con la clase Owner, llave foranea
 
     private boolean verified; //Revisa si la publicacion fue verificada por un administrador.
     private int rankingPos; //Ranking, no se debe rellenar en los campos, esto se hace automatico al momento de crear
@@ -60,6 +60,7 @@ public class Listing {
 
     // Getters y Setters
     public Long getId(){ return this.id; }
+    public UserTemplate getOwnerID() {return ownerID;}
     public boolean getVerified() {return verified;}
     public int getRankingPos(){ return this.rankingPos; }
     public Timestamp getPublishDate(){ return this.publishDate; }
@@ -79,6 +80,9 @@ public class Listing {
 
     //Setters
     public void setId(Long id){ this.id = id; }
+
+    public void setOwnerID(UserTemplate owner) {this.ownerID = owner;}//establecer la llave foranea de owner
+
     public void setVerified(boolean verified) { this.verified = verified; }
     public void setRankingPos(int rankingPos){ this.rankingPos = rankingPos; }
     public void setPublishDate(Timestamp publishDate){ this.publishDate = publishDate; }

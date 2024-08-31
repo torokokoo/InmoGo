@@ -1,12 +1,15 @@
 package com.inmogo.api.Service;
 
 import com.inmogo.api.Entity.Appointment;
+import com.inmogo.api.Entity.Listing;
+import com.inmogo.api.Entity.UserTemplate;
 import com.inmogo.api.Repository.AppointmentRepository;
+import com.inmogo.api.Repository.ListingRepository;
+import com.inmogo.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class AppointmentService {
     @Autowired
     private AppointmentRepository appRepo;
@@ -24,3 +27,4 @@ public class AppointmentService {
         return appRepo.save(newAppoint);
     }
 }
+
