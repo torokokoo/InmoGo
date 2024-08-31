@@ -40,7 +40,8 @@
       },
       logout() {
         // Lógica para cerrar sesión
-        router.push({ name: 'login' });
+        this.$store.dispatch('auth/logout')
+        router.push({ path: '/' });
       }
     },
   }
