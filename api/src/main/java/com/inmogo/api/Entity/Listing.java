@@ -15,7 +15,7 @@ public class Listing {
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
-    private UserTemplate owner; // Relación con la clase UserTemplate, llave foránea
+    private UserTemplate ownerId; // Relación con la clase UserTemplate, llave foránea
 
     private boolean verified;
     private int rankingPos;
@@ -34,7 +34,7 @@ public class Listing {
     private ArrayList<ArrayList<Boolean>> reservations;
 
     // Constructores
-    public Listing(int rankingPos, Timestamp publishDate, Timestamp expired, boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations, UserTemplate owner) {
+    public Listing(int rankingPos, Timestamp publishDate, Timestamp expired, boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations, UserTemplate ownerId) {
         this.verified = false;
         this.rankingPos = rankingPos;
         this.publishDate = publishDate;
@@ -50,7 +50,7 @@ public class Listing {
         this.sectorDescription = sectorDescription;
         this.price = price;
         this.reservations = reservations;
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
 
     public Listing() {
