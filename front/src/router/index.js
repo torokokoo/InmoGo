@@ -7,6 +7,7 @@ import Register from '@/views/Register'
 import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
 import Listing from '@/views/Listing'
+import ProfileOwner from "@/views/ProfileOwner"
 
 const routes = [
   { 
@@ -49,7 +50,12 @@ const routes = [
     name: 'Listing',
     path: '/listings/:id',
     component: Listing,
-  }
+  },
+  {
+    name: 'ProfileOwner',
+    path: '/owner-profile',
+    component: ProfileOwner, 
+  },
 ];
 
 const router = createRouter({
