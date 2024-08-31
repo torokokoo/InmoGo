@@ -12,7 +12,7 @@ public class UserService {
 
     //Register
     public UserTemplate register(long id, String name, String rut, String email, String password, Integer role){
-        UserTemplate userTemplate = new UserTemplate(id, name, rut, email, password, 3);
+        UserTemplate userTemplate = new UserTemplate(id, name, rut, email, password, role);
         UserTemplate exists = userRepo.findUserByEmail(userTemplate.getEmail());
         System.out.println("Register");
         if (exists != null){
