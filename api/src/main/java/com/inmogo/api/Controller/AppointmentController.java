@@ -24,4 +24,3 @@ public class AppointmentController {
         return appointmentService.appoint(newAppointment.getOwnerId(), newAppointment.getAcquirerId(), newAppointment.getListingId(), newAppointment.getUnixDate());
     }
 }
-

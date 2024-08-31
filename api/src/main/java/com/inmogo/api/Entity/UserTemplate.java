@@ -26,11 +26,11 @@ public class UserTemplate {
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.role = role != null ? role : 3; // Establece role a 0 (visitante) si no se proporciona
+        this.role = role != null ? role : 0; // Establece role a 0 (visitante) si no se proporciona
     }
 
     public UserTemplate() {
-        this.role = 3; // Establece role a 0 por defecto
+        this.role = 0; // Establece role a 0 por defecto
     }
 
 
