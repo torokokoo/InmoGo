@@ -1,7 +1,9 @@
 package com.inmogo.api.Service;
 
 import com.inmogo.api.Entity.Listing;
+import com.inmogo.api.Entity.UserTemplate;
 import com.inmogo.api.Repository.ListingRepository;
+import com.inmogo.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,18 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepo;
 
+    @Autowired
+    private UserRepository ownerRepo;
+
     public Listing post(boolean sale, boolean house, String title, ArrayList<String> images, String description, String dimensions, String address, String district, String sectorDescription, int price, ArrayList<ArrayList<Boolean>> reservations, long ownerId) {
         Date time = new Date();
-        Timestamp publishDate = new Timestamp(time.getTime()); //Se crea la fecha de publicacion
-        Timestamp expired = new Timestamp(System.currentTimeMillis() + 30L * 24 * 60 * 60 * 1000); //Se crea la fecha de expiracion
+        Timestamp publishDate = new Timestamp(time.getTime());
+        Timestamp expired = new Timestamp(System.currentTimeMillis() + 30L * 24 * 60 * 60 * 1000);
 
-        Listing newPublish = new Listing(0, publishDate, expired, sale, house, title, images, description, dimensions, address, district, sectorDescription, price, reservations, ownerId);
+        // Buscar el UserTemplate por ID
+        UserTemplate owner = ownerRepo.findById(ownerId).orElseThrow(() -> new RuntimeException("UserTemplate not found"));
+
+        Listing newPublish = new Listing(0, publishDate, expired, sale, house, title, images, description, dimensions, address, district, sectorDescription, price, reservations, owner);
         return listingRepo.save(newPublish);
     }
 
@@ -34,7 +42,7 @@ public class ListingService {
     }
 
     public Listing removeAvailabity(long listingId, int day, int i) {
-        Listing foundListing = listingRepo.findById(listingId).get();
+        Listing foundListing = listingRepo.findById(listingId).orElseThrow(() -> new RuntimeException("Listing not found"));
 
         ArrayList<ArrayList<Boolean>> oldReservations = foundListing.getReservations();
         oldReservations.get(day - 1).set(i, false);
@@ -42,3 +50,4 @@ public class ListingService {
         return listingRepo.save(foundListing);
     }
 }
+
