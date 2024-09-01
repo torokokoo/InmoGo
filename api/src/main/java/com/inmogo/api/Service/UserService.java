@@ -79,4 +79,9 @@ public class UserService {
         return userRepo.findUserById(Id);
     }
 
+    public Integer getRoleById(long id) {
+        UserTemplate user = userRepo.findUserById(id);
+        return user.getRole();
+    }
+
 }
