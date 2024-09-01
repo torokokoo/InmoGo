@@ -84,7 +84,7 @@ export default {
 
 <style scoped>
 .nav-link {
-  transition: transform 0.3s, font-weight 0.3s;
+  transition: transform 0.15s, font-weight 0.15s;
 }
 
 .nav-link:hover {

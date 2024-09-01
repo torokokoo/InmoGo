@@ -8,6 +8,7 @@ import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
 import Listing from '@/views/Listing'
 import ProfileOwner from "@/views/ProfileOwner"
+import ProfileAppointment from "@/views/ProfileAppointment.vue";
 
 const routes = [
   { 
@@ -55,6 +56,11 @@ const routes = [
     name: 'ProfileOwner',
     path: '/owner-profile',
     component: ProfileOwner, 
+  },
+  {
+    name: 'ProfileOwner',
+    path: '/profile-appointment',
+    component: ProfileAppointment, 
   },
 ];
 
