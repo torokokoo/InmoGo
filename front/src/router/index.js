@@ -9,6 +9,7 @@ import Listings from '@/views/Listings'
 import Listing from '@/views/Listing'
 import ProfileOwner from "@/views/ProfileOwner"
 import ProfileAppointment from "@/views/ProfileAppointment.vue";
+import ProfileChat from "@/views/ProfileChat.vue";
 
 const routes = [
   { 
@@ -58,9 +59,14 @@ const routes = [
     component: ProfileOwner, 
   },
   {
-    name: 'ProfileOwner',
+    name: 'ProfileAppointment',
     path: '/profile-appointment',
     component: ProfileAppointment, 
+  },
+  {
+    name: 'ProfileChat',
+    path: '/profile-chat',
+    component: ProfileChat, 
   },
 ];
 

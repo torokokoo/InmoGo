@@ -16,6 +16,7 @@ import Navbar from '@/components/Navbar';
 import router from '@/router';
 
 export default {
+  name: 'Profile',
   components: {
     Navbar,
     MenuProfile,//Se hizo icono para poder crear los demas elementos, chat, notficaciones etc

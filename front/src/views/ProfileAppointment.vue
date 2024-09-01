@@ -24,6 +24,7 @@ import Navbar from '@/components/Navbar';
 import router from '@/router';
 
 export default {
+  name: 'ProfileAppointment',
   components: {
     Navbar,
     MenuProfile,
@@ -33,7 +34,8 @@ export default {
       // Lista de agendamientos
       //Aca va la logica para conectar con los agendamientos existentes
       appointments: [
-        { id: 1, message: 'Tienes una visita agendada:' },
+        { id: 1, message: 'Tienes una visita agendada: 18/09/2024' },
+        { id: 2, message: 'Tienes otra visita agendada:' },
         { id: 2, message: 'Tienes otra visita agendada:' },
         // Agrega más agendamientos según sea necesario
       ],

@@ -4,7 +4,7 @@
       <div class="profile-pic-container">
         <img src="https://picsum.photos/800/500" alt="Foto de Perfil" class="profile-pic">
       </div>
-      <div class="menu-item" @click="goTo('chats')">Chats</div>
+      <div class="menu-item chats" @click="chats">Chats</div>
       <div class="menu-item" @click="goTo('notifications')">Notificaciones</div>
       <div class="menu-item Appoinment" @click="profileAppointment">Visitas Agendadas</div>
       <div class="menu-item" @click="goTo('account')">Datos de la cuenta</div>
@@ -27,6 +27,10 @@ export default {
       router.push({ name: page });
     },
     
+    chats() {
+      router.push({ path: '/profile-chat' });//Redirije
+    },
+
     profileAppointment() {
       router.push({ path: '/profile-appointment' });//Redirije
     },
