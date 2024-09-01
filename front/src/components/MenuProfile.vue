@@ -2,21 +2,21 @@
   <div class="flex">
     <div class="menu-container">
       <div class="profile-pic-container">
-        <img src="https://picsum.photos/800/500" alt="Foto de Perfil" class="profile-pic">
+        <img src="https://picsum.photos/500" alt="Foto de Perfil" class="profile-pic">
       </div>
-
-      <div class="menu-item" @click="goTo('account')">Datos de la cuenta</div>
-        <div class="menu-item" @click="goTo('notifications')">Notificaciones</div>
-        <div class="menu-item Appoinment" @click="profileAppointment">Visitas Agendadas</div>
-        <div class="menu-item" @click="goTo('properties')">Ver mis propiedades</div>
-        <div class="menu-item" @click="goTo('properties')">Aprobar propiedades</div>
-        <div class="menu-item" @click="goTo('pay-publications')">Pagar publicidad</div>
-        <div class="menu-item" @click="goTo('payment-history')">Historial de pagos</div>
-        <div class="menu-item chats" @click="chats">Chats</div>
-        <div class="menu-item" @click="goTo('forum')">Pregunta frecuentes</div>
-        <div class="menu-item" @click="goTo('contact-agency')">Contactar con agencia</div>
-        <div class="menu-item" @click="goTo('support')">Soporte</div>
-        <div class="menu-item logout" @click="logout">Cerrar Sesión</div>
+PENDIENTE HACER LA LOGICA QUE VEA QUE ROL TIENE Y ASI OCULTAR BOTONES DEPENDIENDO DEL ROL-----
+      <div class="menu-item" @click="profile">Datos de la cuenta Rol:Todos</div>
+        <div class="menu-item" @click="goTo('notifications')">Notificaciones  Rol:Todos</div>
+        <div class="menu-item appoinment" @click="appointment">Visitas Agendadas  Rol:3y4</div>
+        <div class="menu-item property" @click="myProperty">Ver mis propiedades  Rol:3</div>
+        <div class="menu-item" @click="accept">Aprobar propiedades  Rol:1</div>
+        <div class="menu-item" @click="goTo('pay-publications')">Pagar publicidad  Rol:3</div>
+        <div class="menu-item" @click="goTo('payment-history')">Historial de pagos  Rol:3y4</div>
+        <div class="menu-item chats" @click="chats">Chats   Rol:Todos</div>
+        <div class="menu-item" @click="goTo('forum')">Pregunta frecuentes  Rol:Todos</div>
+        <div class="menu-item" @click="goTo('contact-agency')">Contactar con agencia  Rol:3</div>
+        <div class="menu-item" @click="goTo('support')">Soporte   Rol:Todos</div>
+        <div class="menu-item logout" @click="logout">Cerrar Sesión   Rol:Todos</div>
     </div>
   </div>
 </template>
@@ -31,12 +31,24 @@ export default {
       router.push({ name: page });
     },
     
+    profile() {
+      router.push({ path: '/profile' });//Redirije
+    },
+
     chats() {
       router.push({ path: '/profile-chat' });//Redirije
     },
 
-    profileAppointment() {
+    appointment() {
       router.push({ path: '/profile-appointment' });//Redirije
+    },
+
+    myProperty() {
+      router.push({ path: '/profile-property' });//Redirije
+    },
+
+    accept() {
+      router.push({ path: '/profile-accept' });//Redirije
     },
 
     logout() {
@@ -99,7 +111,7 @@ export default {
 }
 
 .menu-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   font-weight: bold;
 }
 

@@ -54,7 +54,7 @@ public class UserTemplate {
      * @param rut RUT del usuario.
      * @param email Correo electrónico del usuario.
      * @param password Contraseña del usuario.
-     * @param role Rol del usuario.
+     * @param role Rol del usuario. siendo 0:Visitante, 1:Adminstrador, 2:Mantenedor, 3:Propietario, 4:Adquiriente
      */
     public UserTemplate(long id, String name, String rut, String email, String password, Integer role) {
         this.id = id;

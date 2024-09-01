@@ -4,7 +4,7 @@
     <Navbar />
     <MenuProfile />
     <div class="container mx-auto p-6">
-      <div class="heading text-center font-bold text-3xl mb-8 text-gray-800">Perfil de Usuario</div>
+      <div class="heading text-center font-bold text-3xl mb-8 text-gray-800">Datos de la cuenta</div>
     </div>
   </div>
 </template>    

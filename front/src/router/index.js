@@ -7,9 +7,10 @@ import Register from '@/views/Register'
 import PostProperty from '@/views/PostProperty'
 import Listings from '@/views/Listings'
 import Listing from '@/views/Listing'
-import ProfileOwner from "@/views/ProfileOwner"
 import ProfileAppointment from "@/views/ProfileAppointment.vue";
 import ProfileChat from "@/views/ProfileChat.vue";
+import ProfileMyProperty from "@/views/ProfileMyProperty.vue";
+import ProfileAccept from "@/views/ProfileAccept.vue";
 
 const routes = [
   { 
@@ -53,11 +54,7 @@ const routes = [
     path: '/listings/:id',
     component: Listing,
   },
-  {
-    name: 'ProfileOwner',
-    path: '/owner-profile',
-    component: ProfileOwner, 
-  },
+  //Perfiles que ido creando--
   {
     name: 'ProfileAppointment',
     path: '/profile-appointment',
@@ -67,6 +64,16 @@ const routes = [
     name: 'ProfileChat',
     path: '/profile-chat',
     component: ProfileChat, 
+  },
+  {
+    name: 'ProfileMyProperty',
+    path: '/profile-property',
+    component: ProfileMyProperty, 
+  },
+  {
+    name: 'ProfileAccept',
+    path: '/profile-accept',
+    component: ProfileAccept, 
   },
 ];
 
