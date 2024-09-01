@@ -64,4 +64,11 @@ public class UserController {
         return userService.getUserById(Integer.parseInt(id));
     }
 
+    @GetMapping("/role")
+    public Integer getRoleById(@RequestParam("id") Long id) {
+        Integer role = userService.getRoleById(id);
+        System.out.println("Rol obtenido: " + role); // Mensaje de depuración
+        return role;
+    }
+
 }
