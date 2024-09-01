@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -16,21 +15,22 @@ public class ListingController {
 
     @Autowired
     private ListingService listingService;
-    @PostMapping("/create")
-    public Listing post(@RequestBody Listing newListing) {
-        System.out.println("Creando publicacion");
-        return listingService.post(newListing.getSale(), newListing.getHouse(), newListing.getTitle(), newListing.getImages(), newListing.getDescription(), newListing.getDimensions(), newListing.getAddress(), newListing.getDistrict(), newListing.getSectorDescription(), newListing.getPrice(), newListing.getReservations(), newListing.getOwnerId());
+
+    @PostMapping("/createListing")
+    public Listing createListing(@RequestBody Listing newListing) {
+        System.out.println("Creando publicacion...");
+        return listingService.createListing(newListing);
     }
 
-    @GetMapping("/all")
-    public List<Listing> getAll() {
-        System.out.printf("Consiguiendo todas las publicaciones");
-        return listingService.getAll();
+    @GetMapping("/getAllListings")
+    public List<Listing> getAllListings() {
+        System.out.println("Consiguiendo todas las publicaciones...");
+        return listingService.getAllListings();
     }
 
     @GetMapping("/{id}")
-    public Optional<Listing> getById(@PathVariable long id) {
-        System.out.printf("Buscando propiedad por id");
-        return listingService.getById(id);
+    public Listing findById(@PathVariable Long id) {
+        System.out.println("Buscando propiedad por ID...");
+        return listingService.findById(id);
     }
 }

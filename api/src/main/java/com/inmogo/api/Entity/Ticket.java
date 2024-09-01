@@ -10,13 +10,14 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //ID es auto incremental, no se debe rellenar en los campos
+
     private String paymentType; //tipoDePago, puede ser Boleta o Factura
     private int totalPaid; //Total pagado
     private int ticketID; //Numero de boleta
     private Timestamp date; //Fecha
     private String sellerRUT; //Rut vendedor
 
-    // Constructores
+    // Constructor
     public Ticket(String paymentType, int totalPaid, int ticketID, Timestamp date, String sellerRUT) {
         this.paymentType = paymentType;
         this.totalPaid = totalPaid;
@@ -25,12 +26,18 @@ public class Ticket {
         this.sellerRUT = sellerRUT;
     }
 
-    public Ticket(){
-        this.paymentType = "Boleta";
-        this.totalPaid = 0;
-        this.ticketID = 1;
-        this.date = new Timestamp(System.currentTimeMillis());
-        this.sellerRUT = "12345678-9";
+    // Constructor por Defecto
+    public Ticket(){ this.date = new Timestamp(System.currentTimeMillis()); }
+
+    // Constructor Autoreferencial
+    public Ticket(Ticket ticket){
+        if (ticket != null){
+            this.paymentType = ticket.getPaymentType();
+            this.totalPaid = ticket.getTotalPaid();
+            this.ticketID = ticket.getTicketID();
+            this.date = ticket.getDate();
+            this.sellerRUT = ticket.getSellerRUT();
+        }
     }
 
     // Getters
@@ -42,24 +49,10 @@ public class Ticket {
     public String getSellerRUT() { return sellerRUT; }
 
     // Setters
-    public void setId(Long id) { this.id = id; }
-    public void setPaymentType(String paymentType) { this.paymentType = paymentType; }
-    public void setTotalPaid(int totalPaid) { this.totalPaid = totalPaid; }
-    public void setTicketID(int ticketID) { this.ticketID = ticketID; }
-    public void setDate(Timestamp date) { this.date = date; }
-    public void setSellerRUT(String sellerRUT) { this.sellerRUT = sellerRUT; }
-
-    // Otros métodos
-    public void printTicket(){ //imprimirBoleta
-        //TODO
-    }
-
-    public void webPay(){ //pagoWeb
-        //TODO
-        /*
-         * Se tiene en mente implementar un menu que posea dos opciones que indiquen si se realizo el pago:
-         *   1. Se realizo el pago
-         *   2. No se realizo el pago
-         */
-    }
+    public void setId(Long id) {this.id = id;}
+    public void setPaymentType(String paymentType) {this.paymentType = paymentType;}
+    public void setTotalPaid(int totalPaid) {this.totalPaid = totalPaid;}
+    public void setTicketID(int ticketID) {this.ticketID = ticketID;}
+    public void setDate(Timestamp date) {this.date = date;}
+    public void setSellerRUT(String sellerRUT) {this.sellerRUT = sellerRUT;}
 }

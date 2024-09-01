@@ -11,43 +11,58 @@ import jakarta.persistence.*;
 public class UserTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //Attributes
-    private long id; //ID es auto incremental, no se debe rellenar en los campos
+    private Long id; //ID es auto incremental, no se debe rellenar en los campos
+    
+    //Atributos de valor.
     private String name; //Nombre
     private String rut; //RUT
     private String email; //Correo electronico
-    private String password; //Conseña
-    private Integer role; //Rol, TIPOS de rol 0(Visitante), 1(Administrador), 2(Mod), 3(Propietario), 4(Adquiriente) este se asigna directo en la clase
-
-    //Constructor
-    public UserTemplate(long id, String name, String rut, String email, String password, Integer role) {
-        this.id = id;
+    private String password; //Contraseña
+    private Integer role; //ID de Roles
+    /* ID Roles:
+    0: Visitante
+    1: Administrador
+    2: Moderador / Mantenedor
+    3: Propietario
+    4: Adquiriente
+    */
+    //Constructor por Atributos
+    public UserTemplate(String name, String rut, String email, String password, Integer role) {
         this.name = name;
         this.rut = rut;
         this.email = email;
         this.password = password;
-        this.role = role != null ? role : 0; // Establece role a 0 (visitante) si no se proporciona
+        this.role = ((role >= 0) && (role <= 4)) ? role : 0;
+        // Establece role a 0 (visitante) si no se proporciona.
     }
 
-    // Establece role a 0 por defecto
+    //Constructor por Defecto
     public UserTemplate() { this.role = 0; }
 
+    //Constructor Autoreferencial
+    public UserTemplate(UserTemplate userTemplate){
+        if (userTemplate != null) {
+            this.name = userTemplate.getName();
+            this.rut = userTemplate.getRut();
+            this.email = userTemplate.getEmail();
+            this.password = userTemplate.getPassword();
+            this.role = userTemplate.getRole();
+        }
+    }
 
     //Getters
-    public long getId() { return id; }
+    public Long getId() { return id; }
     public String getName() { return name; }
     public String getRut() { return rut; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
-    public Integer getRole() { return role; } //ConseguirRol
+    public Integer getRole() { return role; }
 
     //Setters
-    public void setId(long id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setRut(String rut) { this.rut = rut; }
-    public void setEmail(String email) { this.email = email; }
-    public void setPassword(String password) { this.password = password; }
-    public void setRole(Integer role) { this.role = role; }
-
-
+    public void setId(Long id) {this.id = id;}
+    public void setName(String name) {this.name = name;}
+    public void setRut(String rut) {this.rut = rut;}
+    public void setEmail(String email) {this.email = email;}
+    public void setPassword(String password) {this.password = password;}
+    public void setRole(Integer role) {this.role = role;}
 }
