@@ -217,7 +217,7 @@ export default {
         });
 
         const payload = {
-          ownerId: 1,
+          ownerId: this.listing.ownerId.id,
           acquirerId: JSON.parse(localStorage.getItem('user')).id,
           listingId: this.$route.params.id,
           unixDate: req.toMillis(),

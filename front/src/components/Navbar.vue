@@ -26,7 +26,7 @@
                     Soporte
                   </router-link>
                 </li>
-                <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900" v-if="isLoggedIn">
+                <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900" v-if="isLoggedIn && role == 3">
                   <router-link to="/post" class="flex items-center nav-link">
                     Crear publicacion
                   </router-link>
@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     this.isLoggedIn = localStorage.getItem('loggedIn') == 'true'
-    this.role = localStorage.getItem('user').role
+    this.role = JSON.parse(localStorage.getItem('user')).role
   },
   methods: {
   }
@@ -84,7 +84,7 @@ export default {
 
 <style scoped>
 .nav-link {
-  transition: transform 0.3s, font-weight 0.3s;
+  transition: transform 0.1s, font-weight 0.1s;
 }
 
 .nav-link:hover {
