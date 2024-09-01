@@ -4,15 +4,19 @@
       <div class="profile-pic-container">
         <img src="https://picsum.photos/800/500" alt="Foto de Perfil" class="profile-pic">
       </div>
-      <div class="menu-item chats" @click="chats">Chats</div>
-      <div class="menu-item" @click="goTo('notifications')">Notificaciones</div>
-      <div class="menu-item Appoinment" @click="profileAppointment">Visitas Agendadas</div>
+
       <div class="menu-item" @click="goTo('account')">Datos de la cuenta</div>
-      <div class="menu-item" @click="goTo('security')">Seguridad</div>
-      <div class="menu-item" @click="goTo('payment-history')">Historial de pagos</div>
-      <div class="menu-item" @click="goTo('forum')">Foro de consulta</div>
-      <div class="menu-item" @click="goTo('support')">Soporte</div>
-      <div class="menu-item logout" @click="logout">Cerrar Sesión</div>
+        <div class="menu-item" @click="goTo('notifications')">Notificaciones</div>
+        <div class="menu-item Appoinment" @click="profileAppointment">Visitas Agendadas</div>
+        <div class="menu-item" @click="goTo('properties')">Ver mis propiedades</div>
+        <div class="menu-item" @click="goTo('properties')">Aprobar propiedades</div>
+        <div class="menu-item" @click="goTo('pay-publications')">Pagar publicidad</div>
+        <div class="menu-item" @click="goTo('payment-history')">Historial de pagos</div>
+        <div class="menu-item chats" @click="chats">Chats</div>
+        <div class="menu-item" @click="goTo('forum')">Pregunta frecuentes</div>
+        <div class="menu-item" @click="goTo('contact-agency')">Contactar con agencia</div>
+        <div class="menu-item" @click="goTo('support')">Soporte</div>
+        <div class="menu-item logout" @click="logout">Cerrar Sesión</div>
     </div>
   </div>
 </template>
