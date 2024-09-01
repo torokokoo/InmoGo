@@ -98,5 +98,12 @@ public class ListingService {
         foundListing.setReservations(oldReservations);
         return listingRepo.save(foundListing);
     }
+
+    public Listing approve(long id) {
+        Listing listing = listingRepo.findById(id).orElseThrow(() -> new RuntimeException("ID no encontrado"));
+        listing.setVerified(true);
+        return listingRepo.save(listing);
+
+    }
 }
 

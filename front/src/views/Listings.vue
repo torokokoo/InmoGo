@@ -45,8 +45,7 @@
       ...mapActions(['listings/getAll']),
       async getAllListings() {
           const res = await this['listings/getAll']()
-          console.log(res)
-          this.listings = res
+          this.listings = res.filter(listing => listing.verified)
       }
     },
   }

@@ -76,4 +76,10 @@ public class ListingController {
         System.out.printf("Buscando propiedad por id");
         return listingService.getById(id);
     }
+
+    @PostMapping("/approve/{id}")
+    public Listing approve(@PathVariable long id) {
+        System.out.println("Propiedad aprobada");
+        return listingService.approve(id);
+    }
 }

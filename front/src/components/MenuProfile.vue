@@ -2,21 +2,21 @@
   <div class="flex">
     <div class="menu-container">
       <div class="profile-pic-container">
-        <img src="https://picsum.photos/500" alt="Foto de Perfil" class="profile-pic">
+        <!-- <img src="https://picsum.photos/500" alt="Foto de Perfil" class="profile-pic"> -->
       </div>
       <!-- Botones del menú con lógica para mostrar u ocultar según el rol del usuario -->
-      <div class="menu-item" @click="profile">Datos de la cuenta Rol:Todos</div>
-      <div class="menu-item" @click="goTo('notifications')">Notificaciones Rol:Todos</div>
-      <div v-if="userRole === 3 || userRole === 4" class="menu-item appoinment" @click="appointment">Visitas Agendadas Rol:3y4</div>
-      <div v-if="userRole === 3" class="menu-item property" @click="myProperty">Ver mis propiedades Rol:3</div>
-      <div v-if="userRole === 1" class="menu-item" @click="accept">Aprobar propiedades Rol:1</div>
-      <div v-if="userRole === 3" class="menu-item" @click="goTo('pay-publications')">Pagar publicidad Rol:3</div>
-      <div v-if="userRole === 3 || userRole === 4" class="menu-item" @click="goTo('payment-history')">Historial de pagos Rol:3y4</div>
-      <div class="menu-item chats" @click="chats">Chats Rol:Todos</div>
-      <div class="menu-item" @click="goTo('forum')">Pregunta frecuentes Rol:Todos</div>
-      <div v-if="userRole === 3" class="menu-item" @click="goTo('contact-agency')">Contactar con agencia Rol:3</div>
-      <div class="menu-item" @click="goTo('support')">Soporte Rol:Todos</div>
-      <div class="menu-item logout" @click="logout">Cerrar Sesión Rol:Todos</div>
+      <div class="menu-item" @click="profile">Datos de la cuenta </div>
+      <div class="menu-item" @click="goTo('notifications')">Notificaciones </div>
+      <div v-if="userRole === 3 || userRole === 4" class="menu-item appoinment" @click="appointment">Visitas Agendadas </div>
+      <div v-if="userRole === 3" class="menu-item property" @click="myProperty">Ver mis propiedades </div>
+      <div v-if="userRole === 1" class="menu-item" @click="accept">Aprobar propiedades </div>
+      <div v-if="userRole === 3" class="menu-item" @click="goTo('pay-publications')">Pagar publicidad </div>
+      <div v-if="userRole === 3 || userRole === 4" class="menu-item" @click="goTo('payment-history')">Historial de pagos </div>
+      <div class="menu-item chats" @click="chats">Chats </div>
+      <div class="menu-item" @click="goTo('forum')">Pregunta frecuentes </div>
+      <div v-if="userRole === 3" class="menu-item" @click="goTo('contact-agency')">Contactar con agencia </div>
+      <div class="menu-item" @click="goTo('support')">Soporte </div>
+      <div class="menu-item logout" @click="logout">Cerrar Sesión </div>
     </div>
   </div>
 </template>
@@ -30,13 +30,13 @@ export default {
   name: 'MenuProfile', // Nombre del componente
   data() {
     return {
-      userRole: null // Inicializamos userRole como null
+      userRole: 0 // Inicializamos userRole como null
     };
   },
   created() {
     // Cuando el componente se crea, obtenemos el ID del usuario desde localStorage
-    const userId = JSON.parse(localStorage.getItem('user')).id;
-    this.getUserRole(userId); // Llamamos al método para obtener el rol del usuario
+    this.userRole = JSON.parse(localStorage.getItem('user')).role;
+    // this.getUserRole(userId); // Llamamos al método para obtener el rol del usuario
   },
   methods: {
     // Método para obtener el rol del usuario desde el backend
@@ -110,11 +110,11 @@ export default {
   width: 350px;
   border: 2px solid #d1d5db;
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
+  min-height: 100%;
   background-color: white;
   padding-top: 100px;
 }

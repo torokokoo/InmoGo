@@ -20,7 +20,6 @@ export default {
         router.push({ path: '/profile' });
     },
     logout({ commit }) {
-        console.log('logout action')
         localStorage.setItem('user', JSON.stringify({}));
         localStorage.setItem('loggedIn', false);
         commit('reset');

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Controlador para gestionar visitas.
  * 
@@ -47,6 +49,11 @@ public class AppointmentController {
                 appointmentRequest.getListingId(),
                 appointmentRequest.getUnixDate()
         );
+    }
+
+    @GetMapping("/all")
+    public List<Appointment> getAll() {
+        return appointmentService.getAll();
     }
 }
 

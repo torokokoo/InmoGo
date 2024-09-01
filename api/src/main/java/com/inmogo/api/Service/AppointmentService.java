@@ -9,6 +9,8 @@ import com.inmogo.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Servicio para la lógica de negocio relacionada con las visitas agendadas (Appointment).
  * 
@@ -48,10 +50,14 @@ public class AppointmentService {
 
         Appointment newAppoint = new Appointment(owner, acquirer, listing, unixDate);
         Appointment exists = appRepo.findByListingIdAndUnixDate(listing, unixDate);
+
         if (exists != null) {
             return null;
         }
         return appRepo.save(newAppoint);
+    }
+    public List<Appointment> getAll(){
+        return appRepo.findAll();
     }
 }
 

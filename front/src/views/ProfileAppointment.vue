@@ -11,7 +11,7 @@
       <div class="appointments-container">
         <!-- Genera un rectángulo por cada agendamiento -->
         <div v-for="appointment in appointments" :key="appointment.id" class="visit-notification-box">
-          <p class="text-black-500 font-bold">{{ appointment.message }}</p>
+          <p class="text-black-500 font-bold">{{ appointment.date }} en tu casa ubicada en {{ appointment.listingId.address }} por {{ appointment.acquirerId.name }}</p>
         </div>
       </div>
     </div>
@@ -21,7 +21,10 @@
 <script>
 import MenuProfile from '@/components/MenuProfile.vue';
 import Navbar from '@/components/Navbar';
+import { api } from '@/config';
 import router from '@/router';
+import { DateTime } from 'luxon';
+import axios from 'axios';
 
 export default {
   name: 'ProfileAppointment',
@@ -34,14 +37,25 @@ export default {
       // Lista de agendamientos
       //Aca va la logica para conectar con los agendamientos existentes
       appointments: [
-        { id: 1, message: 'Tienes una visita agendada: 18/09/2024' },
-        { id: 2, message: 'Tienes otra visita agendada:' },
-        { id: 2, message: 'Tienes otra visita agendada:' },
+        // { id: 1, message: 'Tienes una visita agendada: 18/09/2024' },
+        // { id: 2, message: 'Tienes otra visita agendada:' },
+        // { id: 2, message: 'Tienes otra visita agendada:' },
         // Agrega más agendamientos según sea necesario
       ],
     };
   },
+  mounted() {
+    this.getAppointments();
+  },
   methods: {
+    async getAppointments () {
+      const { data } = await axios.get(`${api}api/appointment/all`);
+      const ownerId = JSON.parse(localStorage.getItem('user')).id;
+      // console.log(data)
+      this.appointments = data
+        .filter(appointment => appointment.ownerId.id == ownerId)
+        .map(appointment => { return {...appointment, date: DateTime.fromMillis(appointment.unixDate).toFormat('ff')}})
+    }
   },
 }
 </script>
