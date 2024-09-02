@@ -11,7 +11,8 @@
       <div class="appointments-container">
         <!-- Genera un rectángulo por cada agendamiento -->
         <div v-for="appointment in appointments" :key="appointment.id" class="visit-notification-box">
-          <p class="text-black-500 font-bold">{{ appointment.date }} en tu casa ubicada en {{ appointment.listingId.address }} por {{ appointment.acquirerId.name }}</p>
+          <p class="text-black-500 font-bold" v-if="role == 4">{{ appointment.date }} en la casa ubicada en {{ appointment.listingId.address }}</p>
+          <p class="text-black-500 font-bold" v-if="role == 3">{{ appointment.date }} en tu casa ubicada en {{ appointment.listingId.address }} por {{ appointment.acquirerId.name }}</p>
         </div>
       </div>
     </div>
@@ -34,14 +35,8 @@ export default {
   },
   data() {
     return {
-      // Lista de agendamientos
-      //Aca va la logica para conectar con los agendamientos existentes
-      appointments: [
-        // { id: 1, message: 'Tienes una visita agendada: 18/09/2024' },
-        // { id: 2, message: 'Tienes otra visita agendada:' },
-        // { id: 2, message: 'Tienes otra visita agendada:' },
-        // Agrega más agendamientos según sea necesario
-      ],
+      appointments: [],
+      role: 0,
     };
   },
   mounted() {
@@ -50,11 +45,20 @@ export default {
   methods: {
     async getAppointments () {
       const { data } = await axios.get(`${api}api/appointment/all`);
-      const ownerId = JSON.parse(localStorage.getItem('user')).id;
-      // console.log(data)
-      this.appointments = data
-        .filter(appointment => appointment.ownerId.id == ownerId)
-        .map(appointment => { return {...appointment, date: DateTime.fromMillis(appointment.unixDate).toFormat('ff')}})
+      const userId = JSON.parse(localStorage.getItem('user')).id;
+      const role = JSON.parse(localStorage.getItem('user')).role;
+      this.role = role
+
+      if (role == 3) {
+        this.appointments = data
+          .filter(appointment => appointment.ownerId.id == userId)
+          .map(appointment => { return {...appointment, date: DateTime.fromMillis(appointment.unixDate).toFormat('ff')}})
+      }
+      if (role == 4) {
+        this.appointments = data
+          .filter(appointment => appointment.acquirerId.id == userId)
+          .map(appointment => { return {...appointment, date: DateTime.fromMillis(appointment.unixDate).toFormat('ff')}})
+      }
     }
   },
 }
