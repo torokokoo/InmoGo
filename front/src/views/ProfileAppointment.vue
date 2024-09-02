@@ -11,7 +11,7 @@
       <div class="appointments-container">
         <!-- Genera un rectángulo por cada agendamiento -->
         <div v-for="appointment in appointments" :key="appointment.id" class="visit-notification-box">
-          <p class="text-black-500 font-bold" v-if="role == 4">{{ appointment.date }} en la casa ubicada en {{ appointment.listingId.address }}</p>
+          <p class="text-black-500 font-bold" v-if="role == 4">{{ appointment.date }} en la casa de {{ appointment.ownerId.name }} ubicada en {{ appointment.listingId.address }}</p>
           <p class="text-black-500 font-bold" v-if="role == 3">{{ appointment.date }} en tu casa ubicada en {{ appointment.listingId.address }} por {{ appointment.acquirerId.name }}</p>
         </div>
       </div>
