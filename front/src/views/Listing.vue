@@ -13,6 +13,8 @@
         <p> {{ listing.sale ? "Venta" : "Arriendo "}} </p>
         <hr class="my-5 mx-5">
         <p class="text-left ml-5"> {{ listing.description }} </p>
+        <hr class="my-5 mx-5">
+        <p class="text-left ml-5"> {{ listing.sectorDescription }} </p>
 
         <div class="">
           <button

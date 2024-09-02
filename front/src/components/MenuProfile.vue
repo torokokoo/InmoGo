@@ -2,7 +2,7 @@
   <div class="flex">
     <div class="menu-container">
       <div class="profile-pic-container">
-        <!-- <img src="https://picsum.photos/500" alt="Foto de Perfil" class="profile-pic"> -->
+        <img src="https://picsum.photos/500" alt="Foto de Perfil" class="profile-pic">
       </div>
       <!-- Botones del menú con lógica para mostrar u ocultar según el rol del usuario -->
       <div class="menu-item" @click="profile">Datos de la cuenta </div>
