@@ -2,7 +2,7 @@
   <Navbar />
 
   <div class="container mx-auto my-10 flex grid-cols-2 md:grid-cols-1">
-      <img class="" width="700" src="https://picsum.photos/800/500" alt="Product Image">
+      <img class="" width="700" :src="listing.images[imgStep] != '#' ? listing.images[imgStep] : 'https://picsum.photos/800/500'" @click="nextImgStep" alt="Product Image">
       <div class="data text-right w-full my-5">
         <h2 class="text-center text-xl font-bold align-center">{{ listing.title }}</h2>
         <p class="text-sm text-gray-400 text-center">{{ listing.address }}, {{ listing.district}} </p>
@@ -193,6 +193,7 @@ import router from '@/router';
 export default {
     data: () => ({
       listing: { reservations: [] },
+      imgStep: 0,
       unixDate: 0,
     }),
     components: {
@@ -207,7 +208,12 @@ export default {
         const res = await this['listings/getById'](this.$route.params.id)
         this.listing = res;
       },
-      async createAppointment() {
+      nextImgStep() {
+        if (this.imgStep + 1 < this.listing.images.length) {
+          this.imgStep++
+        } else {
+          this.imgStep = 0
+        }
       },
       schedule: async function (dia, i) {
         const now = DateTime.now(); // Fecha actual

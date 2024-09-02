@@ -5,7 +5,7 @@
 <div class="grid grid-cols-3 gap-4">
   <div class="max-w-md mx-auto rounded-md overflow-hidden shadow-md hover:shadow-lg" v-for="listing in listings">
     <div class="relative"> <!-- Quitar hidden para configurar la etiqutea -->
-          <img class="w-full" src="https://picsum.photos/800/500" alt="Product Image">
+          <img class="w-full" :src="listing.images[0] != '#' ? listing.images[0] : 'https://picsum.photos/800/500'" alt="Product Image">
           <div class="hidden absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">SALE
           </div>
       </div>

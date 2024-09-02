@@ -117,7 +117,7 @@ import router from '@/router'
           district: this.district,
           description: this.description,
           sectorDescription: this.sectorDescription,
-          images: [this.image],
+          images: this.image.split(',').map(i => i.trim()), // Separa segun las comas y elimina los whitespaces
           dimensions: parseInt(this.squareMeters),
           reservations: [this.selectedHours.lunes, this.selectedHours.martes, this.selectedHours.miercoles, this.selectedHours.jueves, this.selectedHours.viernes, this.selectedHours.sabado, this.selectedHours.domingo],
           price: this.price,
