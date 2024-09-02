@@ -17,6 +17,7 @@
       <div v-if="userRole === 3" class="menu-item" @click="goTo('contact-agency')">Contactar con agencia Rol:3</div>
       <div class="menu-item" @click="goTo('support')">Soporte Rol:Todos</div>
       <div class="menu-item logout" @click="logout">Cerrar Sesión Rol:Todos</div>
+      userRole
     </div>
   </div>
 </template>
